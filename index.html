@@ -61,6 +61,7 @@ button{font:inherit;cursor:pointer}
 .ic span{font-size:28px}.ic a.n{color:var(--red);font-weight:700;display:block;direction:ltr;text-decoration:none}
 .ic .btn{margin-top:10px;font-size:14px;padding:7px 16px}
 footer{background:var(--red);color:#ffffffcc;text-align:center;padding:22px;font-size:13px;margin-top:20px}
+.credit{margin-top:6px;font-size:12px}.credit a{color:#fff;font-weight:800}
 .cart{position:fixed;inset:0;z-index:20;background:#0008;display:none;align-items:flex-end;justify-content:center}
 .cart.open{display:flex}
 .cp{background:#fff;width:100%;max-width:520px;max-height:90vh;overflow:auto;border-radius:24px 24px 0 0;padding:18px}
@@ -100,16 +101,21 @@ footer{background:var(--red);color:#ffffffcc;text-align:center;padding:22px;font
     <div class="ic"><span>📸</span><h3>انستغرام</h3><a class="n" id="iglink" target="_blank" rel="noopener"></a></div>
   </div>
 </section>
-<footer>© باركود فود — جميع الحقوق محفوظة</footer>
+<footer>
+  <div>© باركود فود — جميع الحقوق محفوظة</div>
+  <div class="credit">تصميم المنيو بواسطة حساب الإنستغرام <a href="https://instagram.com/narjizaen" target="_blank" rel="noopener">@narjizaen</a> — لطلب تصميم أو للتواصل</div>
+</footer>
 
 <div class="cart" id="cart"><div class="cp">
   <div class="ch"><h3>🛒 سلة الطلبات</h3><button id="cx" aria-label="إغلاق">✕</button></div>
   <div id="items"></div>
   <div class="tot">المجموع: <b id="tot">0</b> د.ع</div>
   <div id="form">
-    <input id="fn" placeholder="الاسم"><input id="fp" placeholder="رقم الهاتف" inputmode="tel">
-    <input id="fa" placeholder="المحافظة / المنطقة"><input id="fs" placeholder="الحي أو الشارع">
-    <input id="fl" placeholder="أقرب نقطة دالة"><textarea id="fz" rows="2" placeholder="ملاحظات (اختياري)"></textarea>
+    <input id="fn" placeholder="الاسم">
+    <input id="fp" placeholder="رقم الهاتف" inputmode="numeric" autocomplete="tel">
+    <input id="fa" placeholder="المنطقة / الحي">
+    <input id="fl" placeholder="أقرب نقطة دالة">
+    <textarea id="fz" rows="2" placeholder="ملاحظات (اختياري)"></textarea>
     <button class="btn" id="send">إرسال الطلب عبر واتساب</button>
   </div>
 </div></div>
@@ -119,7 +125,7 @@ footer{background:var(--red);color:#ffffffcc;text-align:center;padding:22px;font
 // ============ الإعدادات (عدّلها من هنا) ============
 const CFG = {
   name: 'باركود فود', wa: '9647741911911', phones: ['07741911911', '07761911911'],
-  address: 'قطاع 20 قرب تقاطع الكيارة، بغداد', mapQuery: 'تقاطع الكيارة قطاع 20 بغداد', mapUrl: '', insta: 'barcode.foood'
+  address: 'قطاع 20 قرب تقاطع الكيارة، بغداد', mapQuery: 'تقاطع الكيارة قطاع 20 بغداد', mapUrl: 'https://maps.apple.com/place?address=Alekiara%20Street,%20Baghdad,%20Iraq&coordinate=33.397144,44.437305&name=Alekiara%20Street&map=explore', insta: 'barcode.foood'
 };
 // بيانات Firebase للتقييم المشترك (اتركها فارغة = التقييم يبقى بجهاز الزائر فقط)
 const FB = {apiKey: '', authDomain: '', projectId: '', appId: ''};
@@ -131,16 +137,17 @@ const OFFERS = [
 // المنيو: القسم: [صورة القسم, [[الاسم, السعر أو 3 أسعار, ملاحظة, صورة خاصة]]]
 const T = ['كلاسك', 'سبايسي', 'مدخن'], N = 'ببسي + صمون + ثومية';
 const M = {
- 'ساندويشات': ['sandwich', [...T.map(t => ['زنجر ' + t, 3500]), ...['تويستر', 'فلر'].flatMap(n => T.map(t => [n + ' ' + t, 3500, '', 'wrap'])), ['فاهيتا لحم', 4000, '', 'wrap'], ['فاهيتا دجاج', 3500, '', 'wrap']]],
- 'بيتزا': ['🍕', [['بيتزا باركود',[7000,10000,15000]],['بيتزا لحم',[6000,9000,14000]],['بيتزا دجاج',[5000,8000,12000]],['بيتزا فصول الأربعة',[6000,9000,14000]],['بيتزا خضار',[5000,7000,10000]],['بيتزا بيبروني',[5000,7000,10000]],['بيتزا مارغريتا',[5000,7000,10000]]]],
- 'ريزو': ['🍛', [['ريزو كلاسك',5000],['ريزو مدخن',5000],['ريزو سبايسي',5000],['ريزو مكس أعشاب',5000],['ريزو جبن',6000],['ريزو شاورما لحم',6000],['ريزو شاورما دجاج',6000]]],
+ 'ساندويشات': ['sandwich', [...T.map(t => ['زنجر ' + t, 3500]), ...['تويستر', 'فلر'].flatMap(n => T.map(t => [n + ' ' + t, 3500, '', 'wrap'])), ['فاهيتا لحم', 4000, '', 'wrap'], ['فاهيتا دجاج', 3500, '', 'wrap'], ['هوت دوغ', 3000, 'طعم مشوي • جبنة ذائبة • مخلل وبصل مقرمش', 'hotdog']]],
+ 'بيتزا': ['pizza', [['بيتزا باركود',[7000,10000,15000]],['بيتزا لحم',[6000,9000,14000]],['بيتزا دجاج',[5000,8000,12000]],['بيتزا فصول الأربعة',[6000,9000,14000]],['بيتزا خضار',[5000,7000,10000]],['بيتزا بيبروني',[5000,7000,10000]],['بيتزا مارغريتا',[5000,7000,10000]]]],
+ 'ريزو': ['bowl', [['ريزو كلاسك',5000],['ريزو مدخن',5000],['ريزو سبايسي',5000],['ريزو مكس أعشاب',5000],['ريزو جبن',6000],['ريزو شاورما لحم',6000],['ريزو شاورما دجاج',6000]]],
  'برگر': ['burger', [['برگر لحم كلاسك',3000],['برگر دجاج كلاسك',3000,'','chickenburger'],['جيز برگر',3500],['سموكي برگر',3500],['سبايسي برگر',3500],['هاني ماسترد برگر',3500]]],
  'شاورما': ['wrap', [['صاج شاورما دجاج',2000],['صاج شاورما لحم',2500],['ساندويش شاورما دجاج',2000],['ساندويش شاورما لحم',2500],['ربع كيلو دجاج',5000],['ربع كيلو لحم',6000],['نصف كيلو دجاج',10000],['نصف كيلو لحم',12000],['كيلو شاورما دجاج',20000],['كيلو شاورما لحم',25000]]],
  'كنتاكي': ['chicken', [['كنتاكي 3 قطع',6000,'1 '+N],['كنتاكي 5 قطع',10000,'2 '+N],['كنتاكي 6 قطع',12000,'2 '+N],['كنتاكي 8 قطع',15000,'3 '+N],['كنتاكي 12 قطعة',20000,'4 '+N]]],
  'كرسبي': ['chicken', [['كرسبي 4 قطع',6000,'1 '+N],['كرسبي 6 قطع',10000,'2 '+N],['كرسبي 8 قطع',12000,'2 '+N],['كرسبي 10 قطع',15000,'3 '+N],['كرسبي 12 قطعة',18000,'4 '+N]]],
  'الفنكر': ['fries', [['قدح فنكر',1000],['ماعون فنكر وسط',2000],['ماعون فنكر كبير',3000],['ماعون فنكر بالجبن',2500],['ماعون فنكر هاني ماسترد',2500],['ماعون فنكر هالبينو سبايسي',2500],['باركود فرايز باللحم',4000],['كرسبي فرايز',4000]]],
  'الإيطالي': ['🌯', [['لفم شاورما لحم وسط',7000],['لفم شاورما لحم كبير',10000],['لفم شاورما دجاج وسط',7000],['لفم شاورما دجاج كبير',10000],['سبشل إيطالي',7000],['صاج إيطالي لحم',5000],['صاج إيطالي دجاج',4500]]],
- 'مقبلات': ['🥗', [['مقبلات صغير',1000],['مقبلات وسط',2000],['مقبلات كبير',3000]]]
+ 'مقبلات': ['🥗', [['مقبلات صغير',1000],['مقبلات وسط',2000],['مقبلات كبير',3000]]],
+ 'أجنحة': ['wings', [['أجنحة باركود', 5000, 'بصلصات مختلفة']]]
 };
 const SZ = ['صغير', 'وسط', 'كبير'];
 
@@ -153,11 +160,11 @@ function say(t){ const e = $('toast'); e.textContent = t; e.style.display = 'blo
 
 // ============ التقييم ============
 // R[key] = {s: مجموع النجوم, c: عدد المقيّمين} ، mine[key] = تقييمي أنا
-let R = {}, mine = ls('bf_mine') || {}, fs = null;
+let R = FB.projectId ? {} : (ls('bf_R') || {}), mine = ls('bf_mine') || {}, fs = null;
 const uid = ls('bf_uid') || (() => { const u = Math.random().toString(36).slice(2) + Date.now().toString(36); ls('bf_uid', u); return u; })();
 function starsHTML(k) {
-  const r = R[k], avg = r ? r.s / r.c : 0, shown = mine[k] || Math.round(avg);
-  let h = '<div class="st" data-k="' + k + '">';
+  const r = R[k], avg = r ? r.s / r.c : 0, shown = Math.round(avg);
+  let h = '<div class="st" data-k="' + k + '" title="' + (mine[k] ? 'تقييمك: ' + mine[k] : 'اضغط للتقييم') + '">';
   for (let i = 1; i <= 5; i++) h += '<button data-s="' + i + '" class="' + (i <= shown ? 'on' : '') + '" aria-label="' + i + '">★</button>';
   return h + '<i>' + (r ? avg.toFixed(1) + ' (' + r.c + ')' : 'قيّم') + '</i></div>';
 }
@@ -165,6 +172,7 @@ async function rate(k, s) {
   const old = mine[k]; R[k] = R[k] || {s: 0, c: 0};
   if (old) R[k].s += s - old; else { R[k].s += s; R[k].c++; }   // نفس الزائر = تقييم واحد يتحدّث
   mine[k] = s; ls('bf_mine', mine);
+  if (!FB.projectId) ls('bf_R', R);
   document.querySelectorAll('.st[data-k="' + k + '"]').forEach(e => e.outerHTML = starsHTML(k));
   if (fs) try { await fs.f.setDoc(fs.f.doc(fs.db, 'ratings', k + '_' + uid), {k, s}); say('شكراً لتقييمك ⭐'); }
           catch (_) { say('تعذر حفظ التقييم بالقاعدة'); }
@@ -229,14 +237,18 @@ $('cart').onclick = e => { if (e.target === $('cart')) $('cart').classList.remov
 $('send').onclick = () => {
   const v = id => $(id).value.trim(), ks = Object.keys(cart);
   if (!ks.length) return;
-  if (!v('fn') || !v('fp') || !v('fa')) return say('اكتب الاسم والهاتف والمنطقة');
+  if (!v('fn') || !v('fa')) return say('اكتب الاسم والمنطقة');
+  if (v('fp').length < 10) return say('اكتب رقم هاتف صحيح');
   let t = 0;
   const lines = ks.map(k => { const i = cart[k]; t += i.p * i.q; return '• ' + k + ' × ' + i.q + ' = ' + fmt(i.p * i.q); });
-  const m = ['طلب جديد من ' + CFG.name, '', 'الاسم: ' + v('fn'), 'الهاتف: ' + v('fp'), 'العنوان: ' + [v('fa'), v('fs'), v('fl')].filter(Boolean).join(' - '), '', 'الطلب:', ...lines, '', 'المجموع: ' + fmt(t) + ' د.ع'];
+  const m = ['طلب جديد من ' + CFG.name, '', 'الاسم: ' + v('fn'), 'الهاتف: ' + v('fp'), 'المنطقة: ' + v('fa'), 'أقرب نقطة دالة: ' + (v('fl') || '-'), '', 'الطلب:', ...lines, '', 'المجموع: ' + fmt(t) + ' د.ع'];
   if (v('fz')) m.push('', 'ملاحظات: ' + v('fz'));
   window.open('https://wa.me/' + CFG.wa + '?text=' + encodeURIComponent(m.join('\n')), '_blank');
   say('اضغط إرسال بواتساب لإتمام الطلب');
 };
+$('fp').addEventListener('input', e => {
+  e.target.value = e.target.value.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/\D/g, '');
+});
 </script>
 </body>
 </html>
