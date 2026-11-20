@@ -1,256 +1,1169 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>باركود فود | المنيو والتوصيل</title>
-<meta name="description" content="منيو باركود فود — شاورما، برگر، بيتزا وأكثر. توصيل سريع.">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-:root{--red:#b5384a;--gold:#eec14d;--ink:#2a0d14;--bg:#fffaf2;--line:#f0e4d2}
-*{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{background:var(--bg);color:var(--ink);font-family:'Cairo',Tahoma,sans-serif;line-height:1.7}
-header{position:sticky;top:0;z-index:9;display:flex;justify-content:space-between;align-items:center;padding:8px 18px;background:#fffaf2e8;backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.lg{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--red);font-size:18px}
-.lg img{width:38px;height:38px;border-radius:50%}
-nav{display:flex;align-items:center;gap:14px}
-nav a{color:var(--ink);text-decoration:none;font-size:14px;font-weight:600}
-button{font:inherit;cursor:pointer}
-.btn{display:inline-block;padding:10px 24px;border-radius:40px;font-weight:700;text-decoration:none;border:2px solid var(--red);background:var(--red);color:#fff;transition:.2s}
-.btn.o{background:none;color:var(--red)}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px #b5384a33}
-.cartbtn{background:var(--red);color:#fff;border:0;border-radius:30px;padding:6px 14px;font-weight:700}
-.hero{text-align:center;padding:44px 18px 36px}
-.hero img{width:130px;height:130px;border-radius:50%;box-shadow:0 14px 34px #b5384a40}
-.hero h1{font-size:clamp(32px,8vw,54px);font-weight:800;color:var(--red);line-height:1.3;margin-top:10px}
-.hero p{opacity:.75;margin:4px 0 20px}
-.hero .btn{margin:4px}
-.sec{max-width:1000px;margin:auto;padding:34px 16px}
-.sec h2{font-size:26px;font-weight:800;color:var(--red)}
-.sub{opacity:.6;margin-bottom:18px}
-.offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
-.of{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 12px 30px #2a0d1418;border:1px solid var(--line)}
-.of img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
-.of .bd{padding:14px 18px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-.of small{display:block;opacity:.65}.of b{color:var(--red);font-size:22px}
-.tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 0 14px;scrollbar-width:none}
-.tabs button{flex:none;font-weight:700;padding:8px 18px;border-radius:30px;border:1.5px solid var(--line);background:#fff;color:var(--ink)}
-.tabs button.on{background:var(--red);color:#fff;border-color:var(--red)}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-@media(min-width:700px){.grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}}
-.card{background:#fff;border-radius:22px;overflow:hidden;border:1px solid var(--line);box-shadow:0 8px 22px #2a0d1410;display:flex;flex-direction:column;transition:.25s}
-.card:hover{transform:translateY(-4px);box-shadow:0 16px 30px #2a0d1420}
-.ph{aspect-ratio:1/1;display:grid;place-items:center;background:radial-gradient(circle at 50% 60%,#fff 40%,#fdf1de)}
-.ph img{width:86%;height:86%;object-fit:contain;filter:drop-shadow(0 12px 10px #2a0d1430);transition:.3s}
-.card:hover .ph img{transform:scale(1.06) rotate(-2deg)}
-.ph span{font-size:64px}
-.bd2{padding:10px 14px 14px;display:flex;flex-direction:column;gap:3px;flex:1}
-.bd2 h3{font-size:15.5px;line-height:1.4}.bd2 small{opacity:.6;font-size:12px}
-.st{display:flex;align-items:center}
-.st button{background:none;border:0;color:#e3d7c4;font-size:19px;padding:0 1px;line-height:1}
-.st button.on{color:#f0a500}
-.st i{font-style:normal;font-size:12px;opacity:.65;margin-inline-start:6px}
-.row{margin-top:auto;padding-top:8px;display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap}
-.pr{color:var(--red);font-weight:800}
-.add{background:var(--red);color:#fff;border:0;border-radius:20px;padding:6px 13px;font-weight:700;font-size:13px}
-.add u{text-decoration:none;font-size:10px;opacity:.8;margin-inline-end:4px}
-.sz{display:flex;gap:5px;flex-wrap:wrap;width:100%}
-.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
-.ic{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;text-align:center}
-.ic span{font-size:28px}.ic a.n{color:var(--red);font-weight:700;display:block;direction:ltr;text-decoration:none}
-.ic .btn{margin-top:10px;font-size:14px;padding:7px 16px}
-footer{background:var(--red);color:#ffffffcc;text-align:center;padding:22px;font-size:13px;margin-top:20px}
-.credit{margin-top:6px;font-size:12px}.credit a{color:#fff;font-weight:800}
-.cart{position:fixed;inset:0;z-index:20;background:#0008;display:none;align-items:flex-end;justify-content:center}
-.cart.open{display:flex}
-.cp{background:#fff;width:100%;max-width:520px;max-height:90vh;overflow:auto;border-radius:24px 24px 0 0;padding:18px}
-.ch{display:flex;justify-content:space-between;align-items:center}
-.ch button{background:none;border:0;font-size:22px}
-.ci{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
-.ci small{display:block;color:var(--red)}
-.qt{display:flex;align-items:center;gap:10px}
-.qt button{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--red);background:none;color:var(--red);font-size:18px}
-.tot{margin:12px 0;font-size:18px}.tot b{color:var(--red)}
-#form{display:none}
-#form input,#form textarea{width:100%;font:inherit;border:1px solid var(--line);background:#fffaf2;border-radius:12px;padding:10px 12px;margin-bottom:8px}
-#form .btn{width:100%;text-align:center}
-.toast{position:fixed;inset-inline:16px;bottom:24px;z-index:30;background:#2a0d14ee;color:#fff;padding:10px 16px;border-radius:14px;text-align:center;display:none}
-</style>
-</head>
-<body>
-<header>
-  <div class="lg"><img src="logo.png" alt="">باركود فود</div>
-  <nav><a href="#offers">العروض</a><a href="#menu">المنيو</a><a href="#contact">الموقع</a>
-  <button class="cartbtn" id="cartbtn">🛒 <b id="cnt">0</b></button></nav>
-</header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>باركود فود | المنيو والتوصيل</title>
+    <meta name="description" content="منيو باركود فود — بكل وقت موجود." />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --red: #b43a45;
+        --red-deep: #ac3b3f;
+        --gold: #edc24f;
+        --gold-wash: #fbf2d9;
+        --ink: #35272a;
+        --muted: #78696a;
+        --bg: #faf8f3;
+        --surface: #fff;
+        --line: #e9e1d8;
+        --shadow: 0 12px 32px #35272a0d;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 76px;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Cairo", Tahoma, sans-serif;
+        line-height: 1.7;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        padding: 10px max(20px, calc((100vw - 1120px) / 2));
+        background: #faf8f3ed;
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+      }
+      .lg {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        color: var(--red);
+        font-size: 18px;
+        white-space: nowrap;
+      }
+      .lg img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        box-shadow: 0 3px 10px #35272a18;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        gap: clamp(10px, 2vw, 24px);
+      }
+      nav a {
+        color: var(--ink);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        transition: color 0.2s;
+      }
+      nav a:hover {
+        color: var(--red);
+      }
+      button {
+        font: inherit;
+        cursor: pointer;
+      }
+      button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid var(--gold);
+        outline-offset: 3px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 24px;
+        border-radius: 40px;
+        font-weight: 700;
+        text-decoration: none;
+        border: 1px solid var(--red);
+        background: var(--red);
+        color: #fff;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s,
+          background 0.2s;
+      }
+      .btn.o {
+        background: transparent;
+        color: var(--red);
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px #b43a4533;
+      }
+      .btn.o:hover {
+        background: var(--gold-wash);
+      }
+      .cartbtn {
+        background: var(--red);
+        color: #fff;
+        border: 0;
+        border-radius: 30px;
+        padding: 7px 15px;
+        font-weight: 700;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .cartbtn:hover,
+      .add:hover {
+        background: var(--red-deep);
+        transform: translateY(-1px);
+      }
+      .hero {
+        text-align: center;
+        padding: 56px 18px 44px;
+        background: radial-gradient(
+          ellipse at 50% 0%,
+          #edc24f20,
+          transparent 58%
+        );
+      }
+      .hero img {
+        width: 132px;
+        height: 132px;
+        border-radius: 50%;
+        box-shadow: 0 14px 34px #b43a4530;
+      }
+      .hero h1 {
+        font-size: clamp(32px, 8vw, 54px);
+        font-weight: 800;
+        color: var(--red);
+        line-height: 1.3;
+        margin-top: 10px;
+      }
+      .hero p {
+        color: var(--muted);
+        margin: 6px 0 22px;
+      }
+      .hero .btn {
+        margin: 4px;
+      }
+      .sec {
+        max-width: 1120px;
+        margin: auto;
+        padding: 38px 20px;
+      }
+      .sec h2 {
+        font-size: clamp(23px, 4vw, 29px);
+        font-weight: 800;
+        color: var(--red);
+        line-height: 1.4;
+      }
+      .sec h2:after {
+        content: "";
+        display: block;
+        width: 46px;
+        height: 3px;
+        margin-top: 9px;
+        border-radius: 3px;
+        background: var(--gold);
+      }
+      .sub {
+        color: var(--muted);
+        font-size: 14px;
+        margin: 8px 0 22px;
+      }
+      .offers {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 20px;
+      }
+      .of {
+        background: var(--surface);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+      }
+      .of:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 16px 36px #35272a14;
+      }
+      .of img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        display: block;
+      }
+      .of .bd {
+        padding: 16px 18px 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .of small {
+        display: block;
+        color: var(--muted);
+      }
+      .of b {
+        color: var(--red);
+        font-size: 22px;
+      }
+      .tabs {
+        display: flex;
+        gap: 9px;
+        overflow-x: auto;
+        padding: 4px 2px 16px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--gold) transparent;
+      }
+      .tabs button {
+        flex: none;
+        font-weight: 700;
+        padding: 8px 19px;
+        border-radius: 30px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--ink);
+        transition:
+          background 0.2s,
+          color 0.2s,
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .tabs button:hover {
+        border-color: var(--red);
+        color: var(--red);
+      }
+      .tabs button.on {
+        background: var(--red);
+        color: #fff;
+        border-color: var(--red);
+        box-shadow: 0 4px 12px #b43a4526;
+      }
+      #menu {
+        max-width: 1160px;
+      }
+      #menu .tabs {
+        margin-top: 4px;
+      }
+      #menu .grid {
+        padding-top: 2px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 18px;
+      }
+      .card {
+        background: var(--surface);
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        box-shadow: 0 5px 18px #35272a0a;
+        display: flex;
+        flex-direction: column;
+        transition:
+          transform 0.25s,
+          border-color 0.25s,
+          box-shadow 0.25s;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        border-color: #b43a4540;
+        box-shadow: 0 15px 32px #35272a14;
+      }
+      .ph {
+        aspect-ratio: 1/1;
+        display: grid;
+        place-items: center;
+        background: radial-gradient(circle at 50% 60%, #fff 38%, #fbf2d9 100%);
+        overflow: hidden;
+      }
+      .ph img {
+        width: 84%;
+        height: 84%;
+        object-fit: contain;
+        filter: drop-shadow(0 12px 10px #35272a24);
+        transition: transform 0.3s;
+      }
+      .card:hover .ph img {
+        transform: scale(1.05) rotate(-1deg);
+      }
+      .ph span {
+        font-size: 64px;
+      }
+      .bd2 {
+        padding: 14px 16px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        flex: 1;
+      }
+      .bd2 h3 {
+        font-size: 16px;
+        line-height: 1.5;
+        font-weight: 800;
+        color: var(--ink);
+      }
+      .bd2 small {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.6;
+      }
+      .st {
+        display: flex;
+        align-items: center;
+      }
+      .st button {
+        background: none;
+        border: 0;
+        color: #d9d0c5;
+        font-size: 19px;
+        padding: 0 1px;
+        line-height: 1;
+      }
+      .st button.on {
+        color: var(--gold);
+      }
+      .st i {
+        font-style: normal;
+        font-size: 12px;
+        color: var(--muted);
+        margin-inline-start: 6px;
+      }
+      .row {
+        margin-top: auto;
+        padding-top: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .pr {
+        color: var(--red);
+        font-weight: 800;
+        font-size: 17px;
+      }
+      .add {
+        background: var(--red);
+        color: #fff;
+        border: 0;
+        border-radius: 20px;
+        padding: 7px 14px;
+        font-weight: 700;
+        font-size: 13px;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .add u {
+        text-decoration: none;
+        font-size: 10px;
+        opacity: 0.85;
+        margin-inline-end: 4px;
+      }
+      .sz {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+      .sz .add {
+        background: var(--gold-wash);
+        color: var(--red-deep);
+        border: 1px solid #edc24f80;
+      }
+      .sz .add:hover {
+        background: var(--gold);
+        color: var(--ink);
+      }
+      .info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 16px;
+      }
+      .ic {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 22px;
+        text-align: center;
+        box-shadow: 0 5px 18px #35272a08;
+      }
+      .ic span {
+        font-size: 28px;
+      }
+      .ic a.n {
+        color: var(--red);
+        font-weight: 700;
+        display: block;
+        direction: ltr;
+        text-decoration: none;
+      }
+      .ic .btn {
+        margin-top: 10px;
+        font-size: 14px;
+        padding: 7px 16px;
+      }
+      footer {
+        background: var(--red);
+        color: #ffffffd9;
+        text-align: center;
+        padding: 24px 18px;
+        font-size: 13px;
+        margin-top: 24px;
+        border-top: 3px solid var(--gold);
+      }
+      .credit {
+        margin-top: 6px;
+        font-size: 12px;
+      }
+      .credit a {
+        color: #fff;
+        font-weight: 800;
+      }
+      .cart {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        background: #24191ab0;
+        display: none;
+        align-items: flex-end;
+        justify-content: center;
+        backdrop-filter: blur(3px);
+      }
+      .cart.open {
+        display: flex;
+      }
+      .cp {
+        background: var(--surface);
+        width: 100%;
+        max-width: 520px;
+        max-height: 90vh;
+        overflow: auto;
+        border-radius: 24px 24px 0 0;
+        padding: 20px;
+        border: 1px solid var(--line);
+        box-shadow: 0 -12px 40px #24191a20;
+      }
+      .ch {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .ch button {
+        background: none;
+        border: 0;
+        font-size: 22px;
+        color: var(--red);
+      }
+      .ci {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 0;
+        border-bottom: 1px dashed var(--line);
+      }
+      .ci small {
+        display: block;
+        color: var(--red);
+      }
+      .qt {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .qt button {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1.5px solid var(--red);
+        background: none;
+        color: var(--red);
+        font-size: 18px;
+      }
+      .tot {
+        margin: 14px 0;
+        font-size: 18px;
+      }
+      .tot b {
+        color: var(--red);
+      }
+      #form {
+        display: none;
+      }
+      #form input,
+      #form textarea {
+        width: 100%;
+        font: inherit;
+        border: 1px solid var(--line);
+        background: var(--bg);
+        border-radius: 12px;
+        padding: 10px 12px;
+        margin-bottom: 8px;
+        color: var(--ink);
+      }
+      #form input:focus,
+      #form textarea:focus {
+        outline: 2px solid #edc24f99;
+        border-color: var(--gold);
+      }
+      #form .btn {
+        width: 100%;
+        text-align: center;
+      }
+      .toast {
+        position: fixed;
+        inset-inline: 16px;
+        bottom: 24px;
+        z-index: 30;
+        background: #35272af2;
+        color: #fff;
+        padding: 12px 18px;
+        border-radius: 14px;
+        text-align: center;
+        display: none;
+        box-shadow: 0 8px 24px #35272a30;
+      }
+      @media (max-width: 560px) {
+        header {
+          padding: 8px 12px;
+          gap: 8px;
+        }
+        .lg {
+          font-size: 15px;
+          gap: 7px;
+        }
+        .lg img {
+          width: 34px;
+          height: 34px;
+        }
+        nav {
+          gap: 9px;
+        }
+        nav a {
+          font-size: 12px;
+        }
+        .cartbtn {
+          padding: 6px 10px;
+        }
+        .hero {
+          padding: 40px 16px 32px;
+        }
+        .hero img {
+          width: 112px;
+          height: 112px;
+        }
+        .sec {
+          padding: 30px 16px;
+        }
+        .grid {
+          grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+          gap: 14px;
+        }
+      }
+      @media (max-width: 380px) {
+        nav {
+          gap: 6px;
+        }
+        nav a {
+          font-size: 11px;
+        }
+        .lg {
+          font-size: 13px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *:before,
+        *:after {
+          scroll-behavior: auto !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="lg"><img src="logo.png" alt="" />باركود فود</div>
+      <nav>
+        <a href="#offers">العروض</a><a href="#menu">المنيو</a
+        ><a href="#contact">الموقع</a>
+        <button class="cartbtn" id="cartbtn">🛒 <b id="cnt">0</b></button>
+      </nav>
+    </header>
 
-<section class="hero">
-  <img src="logo.png" alt="شعار باركود فود">
-  <h1>باركود فود</h1>
-  <p>شاورما، برگر، بيتزا وأكثر… توصيل سريع لباب بيتك</p>
-  <a class="btn" href="#menu">شوف المنيو</a><a class="btn o" href="#contact">الموقع والتواصل</a>
-</section>
+    <section class="hero">
+      <img src="logo.png" alt="شعار باركود فود" />
+      <h1>باركود فود</h1>
+      <p>شاورما، برگر، بيتزا وأكثر… توصيل سريع لباب بيتك</p>
+      <a class="btn" href="#menu">شوف المنيو</a
+      ><a class="btn o" href="#contact">الموقع والتواصل</a>
+    </section>
 
-<section class="sec" id="offers"><h2>العروض المتاحة حالياً</h2><p class="sub">Current Offers</p><div class="offers" id="offers-box"></div></section>
-<section class="sec" id="menu"><h2>المنيو</h2><p class="sub">الأسعار بالدينار العراقي</p><div class="tabs" id="tabs"></div><div class="grid" id="grid"></div></section>
-<section class="sec" id="contact"><h2>تواصل معنا</h2><p class="sub">توصيل سريع</p>
-  <div class="info">
-    <div class="ic"><span>📍</span><h3>الموقع</h3><p id="addr"></p><a class="btn" id="maplink" target="_blank" rel="noopener">افتح على الخريطة</a></div>
-    <div class="ic"><span>📞</span><h3>الهاتف</h3><div id="phones"></div><a class="btn" id="walink" target="_blank" rel="noopener">راسلنا واتساب</a></div>
-    <div class="ic"><span>📸</span><h3>انستغرام</h3><a class="n" id="iglink" target="_blank" rel="noopener"></a></div>
-  </div>
-</section>
-<footer>
-  <div>© باركود فود — جميع الحقوق محفوظة</div>
-  <div class="credit">تصميم المنيو بواسطة <a href="https://instagram.com/narjizaen" target="_blank" rel="noopener">@narjizaen</a> — لطلب تصميم أو للتواصل</div>
-</footer>
+    <section class="sec" id="offers">
+      <h2>العروض المتاحة حالياً</h2>
+      <p class="sub">Current Offers</p>
+      <div class="offers" id="offers-box"></div>
+    </section>
+    <section class="sec" id="menu">
+      <h2>المنيو</h2>
+      <p class="sub">الأسعار بالدينار العراقي</p>
+      <div class="tabs" id="tabs"></div>
+      <div class="grid" id="grid"></div>
+    </section>
+    <section class="sec" id="contact">
+      <h2>تواصل معنا</h2>
+      <p class="sub">توصيل سريع</p>
+      <div class="info">
+        <div class="ic">
+          <span>📍</span>
+          <h3>الموقع</h3>
+          <p id="addr"></p>
+          <a class="btn" id="maplink" target="_blank" rel="noopener"
+            >افتح على الخريطة</a
+          >
+        </div>
+        <div class="ic">
+          <span>📞</span>
+          <h3>الهاتف</h3>
+          <div id="phones"></div>
+          <a class="btn" id="walink" target="_blank" rel="noopener"
+            >راسلنا واتساب</a
+          >
+        </div>
+        <div class="ic">
+          <span>📸</span>
+          <h3>انستغرام</h3>
+          <a class="n" id="iglink" target="_blank" rel="noopener"></a>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div>© باركود فود — جميع الحقوق محفوظة</div>
+      <div class="credit">
+        تصميم المنيو بواسطة
+        <a href="https://instagram.com/narjizaen" target="_blank" rel="noopener"
+          >@narjizaen</a
+        >
+        — لطلب تصميم أو للتواصل
+      </div>
+    </footer>
 
-<div class="cart" id="cart"><div class="cp">
-  <div class="ch"><h3>🛒 سلة الطلبات</h3><button id="cx" aria-label="إغلاق">✕</button></div>
-  <div id="items"></div>
-  <div class="tot">المجموع: <b id="tot">0</b> د.ع</div>
-  <div id="form">
-    <input id="fn" placeholder="الاسم">
-    <input id="fp" placeholder="رقم الهاتف" inputmode="numeric" autocomplete="tel">
-    <input id="fa" placeholder="المنطقة / الحي">
-    <input id="fl" placeholder="أقرب نقطة دالة">
-    <textarea id="fz" rows="2" placeholder="ملاحظات (اختياري)"></textarea>
-    <button class="btn" id="send">إرسال الطلب عبر واتساب</button>
-  </div>
-</div></div>
-<div class="toast" id="toast"></div>
+    <div class="cart" id="cart">
+      <div class="cp">
+        <div class="ch">
+          <h3>🛒 سلة الطلبات</h3>
+          <button id="cx" aria-label="إغلاق">✕</button>
+        </div>
+        <div id="items"></div>
+        <div class="tot">المجموع: <b id="tot">0</b> د.ع</div>
+        <div id="form">
+          <input id="fn" placeholder="الاسم" />
+          <input
+            id="fp"
+            placeholder="رقم الهاتف"
+            inputmode="numeric"
+            autocomplete="tel"
+          />
+          <input id="fa" placeholder="المنطقة / الحي" />
+          <input id="fl" placeholder="أقرب نقطة دالة" />
+          <textarea id="fz" rows="2" placeholder="ملاحظات (اختياري)"></textarea>
+          <button class="btn" id="send">إرسال الطلب عبر واتساب</button>
+        </div>
+      </div>
+    </div>
+    <div class="toast" id="toast"></div>
 
-<script>
-// ============ الإعدادات (عدّلها من هنا) ============
-const CFG = {
-  name: 'باركود فود', wa: '9647741911911', phones: ['07741911911', '07761911911'],
-  address: 'قطاع 20 قرب تقاطع الكيارة، بغداد', mapQuery: 'تقاطع الكيارة قطاع 20 بغداد', mapUrl: 'https://maps.apple.com/place?address=Alekiara%20Street,%20Baghdad,%20Iraq&coordinate=33.397144,44.437305&name=Alekiara%20Street&map=explore', insta: 'barcode.foood'
-};
-// بيانات Firebase للتقييم المشترك (اتركها فارغة = التقييم يبقى بجهاز الزائر فقط)
-const FB = {apiKey: '', authDomain: '', projectId: '', appId: ''};
-// العروض: [الاسم, الوصف, السعر, الصورة]
-const OFFERS = [
-  ['عرض الكنتاكي والبرگر', 'دجاج مقرمش + برگر + فنكر + مشروب', 10000, 'offer1.jpg'],
-  ['عرض الميكس', 'برگر + دجاج مقرمش + شاورما', 10000, 'offer2.jpg']
-];
-// المنيو: القسم: [صورة القسم, [[الاسم, السعر أو 3 أسعار, ملاحظة, صورة خاصة]]]
-const T = ['كلاسك', 'سبايسي', 'مدخن'], N = 'ببسي + صمون + ثومية';
-const M = {
- 'ساندويشات': ['sandwich', [...T.map(t => ['زنجر ' + t, 3500]), ...['تويستر', 'فلر'].flatMap(n => T.map(t => [n + ' ' + t, 3500, '', 'wrap'])), ['فاهيتا لحم', 4000, '', 'wrap'], ['فاهيتا دجاج', 3500, '', 'wrap'], ['هوت دوغ', 3000, 'طعم مشوي • جبنة ذائبة • مخلل وبصل مقرمش', 'hotdog.jpeg']]],
- 'بيتزا': ['pizza', [['بيتزا باركود',[7000,10000,15000]],['بيتزا لحم',[6000,9000,14000]],['بيتزا دجاج',[5000,8000,12000]],['بيتزا فصول الأربعة',[6000,9000,14000]],['بيتزا خضار',[5000,7000,10000]],['بيتزا بيبروني',[5000,7000,10000]],['بيتزا مارغريتا',[5000,7000,10000]]]],
- 'ريزو': ['bowl', [['ريزو كلاسك',5000],['ريزو مدخن',5000],['ريزو سبايسي',5000],['ريزو مكس أعشاب',5000],['ريزو جبن',6000],['ريزو شاورما لحم',6000],['ريزو شاورما دجاج',6000]]],
- 'برگر': ['burger', [['برگر لحم كلاسك',3000],['برگر دجاج كلاسك',3000,'','chickenburger'],['جيز برگر',3500],['سموكي برگر',3500],['سبايسي برگر',3500],['هاني ماسترد برگر',3500]]],
- 'شاورما': ['wrap', [['صاج شاورما دجاج',2000],['صاج شاورما لحم',2500],['ساندويش شاورما دجاج',2000],['ساندويش شاورما لحم',2500],['ربع كيلو دجاج',5000],['ربع كيلو لحم',6000],['نصف كيلو دجاج',10000],['نصف كيلو لحم',12000],['كيلو شاورما دجاج',20000],['كيلو شاورما لحم',25000]]],
- 'كنتاكي': ['chicken', [['كنتاكي 3 قطع',6000,'1 '+N],['كنتاكي 5 قطع',10000,'2 '+N],['كنتاكي 6 قطع',12000,'2 '+N],['كنتاكي 8 قطع',15000,'3 '+N],['كنتاكي 12 قطعة',20000,'4 '+N]]],
- 'كرسبي': ['chicken', [['كرسبي 4 قطع',6000,'1 '+N],['كرسبي 6 قطع',10000,'2 '+N],['كرسبي 8 قطع',12000,'2 '+N],['كرسبي 10 قطع',15000,'3 '+N],['كرسبي 12 قطعة',18000,'4 '+N]]],
- 'الفنكر': ['fries', [['قدح فنكر',1000],['ماعون فنكر وسط',2000],['ماعون فنكر كبير',3000],['ماعون فنكر بالجبن',2500],['ماعون فنكر هاني ماسترد',2500],['ماعون فنكر هالبينو سبايسي',2500],['باركود فرايز باللحم',4000],['كرسبي فرايز',4000]]],
- 'الإيطالي': ['🌯', [['لفم شاورما لحم وسط',7000],['لفم شاورما لحم كبير',10000],['لفم شاورما دجاج وسط',7000],['لفم شاورما دجاج كبير',10000],['سبشل إيطالي',7000],['صاج إيطالي لحم',5000],['صاج إيطالي دجاج',4500]]],
- 'مقبلات': ['🥗', [['مقبلات صغير',1000],['مقبلات وسط',2000],['مقبلات كبير',3000]]],
- 'أجنحة': ['wings.jpeg', [['أجنحة باركود', 5000, 'بصلصات مختلفة']]]
-};
-const SZ = ['صغير', 'وسط', 'كبير'];
+    <script>
+      // ============ الإعدادات (عدّلها من هنا) ============
+      const CFG = {
+        name: "باركود فود",
+        wa: "9647741911911",
+        phones: ["07741911911", "07761911911"],
+        address: "قطاع 20 قرب تقاطع الكيارة، بغداد",
+        mapQuery: "تقاطع الكيارة قطاع 20 بغداد",
+        mapUrl:
+          "https://maps.apple.com/place?address=Alekiara%20Street,%20Baghdad,%20Iraq&coordinate=33.397144,44.437305&name=Alekiara%20Street&map=explore",
+        insta: "barcode.foood",
+      };
+      // بيانات Firebase للتقييم المشترك (اتركها فارغة = التقييم يبقى بجهاز الزائر فقط)
+      const FB = { apiKey: "", authDomain: "", projectId: "", appId: "" };
+      // العروض: [الاسم, الوصف, السعر, الصورة]
+      const OFFERS = [
+        [
+          "عرض الكنتاكي والبرگر",
+          "دجاج مقرمش + برگر + فنكر + مشروب",
+          10000,
+          "offer1.jpg",
+        ],
+        ["عرض الميكس", "برگر + دجاج مقرمش + شاورما", 10000, "offer2.jpg"],
+      ];
+      // المنيو: القسم: [صورة القسم, [[الاسم, السعر أو 3 أسعار, ملاحظة, صورة خاصة]]]
+      const T = ["كلاسك", "سبايسي", "مدخن"],
+        N = "ببسي + صمون + ثومية";
+      const M = {
+        ساندويشات: [
+          "sandwich",
+          [
+            ...T.map((t) => ["زنجر " + t, 3500]),
+            ...["تويستر", "فلر"].flatMap((n) =>
+              T.map((t) => [n + " " + t, 3500, "", "wrap"]),
+            ),
+            ["فاهيتا لحم", 4000, "", "wrap"],
+            ["فاهيتا دجاج", 3500, "", "wrap"],
+            [
+              "هوت دوغ",
+              3000,
+              "طعم مشوي • جبنة ذائبة • مخلل وبصل مقرمش",
+              "hotdog.jpeg",
+            ],
+          ],
+        ],
+        بيتزا: [
+          "pizza",
+          [
+            ["بيتزا باركود", [7000, 10000, 15000]],
+            ["بيتزا لحم", [6000, 9000, 14000]],
+            ["بيتزا دجاج", [5000, 8000, 12000]],
+            ["بيتزا فصول الأربعة", [6000, 9000, 14000]],
+            ["بيتزا خضار", [5000, 7000, 10000]],
+            ["بيتزا بيبروني", [5000, 7000, 10000]],
+            ["بيتزا مارغريتا", [5000, 7000, 10000]],
+          ],
+        ],
+        ريزو: [
+          "bowl",
+          [
+            ["ريزو كلاسك", 5000],
+            ["ريزو مدخن", 5000],
+            ["ريزو سبايسي", 5000],
+            ["ريزو مكس أعشاب", 5000],
+            ["ريزو جبن", 6000],
+            ["ريزو شاورما لحم", 6000],
+            ["ريزو شاورما دجاج", 6000],
+          ],
+        ],
+        برگر: [
+          "burger",
+          [
+            ["برگر لحم كلاسك", 3000],
+            ["برگر دجاج كلاسك", 3000, "", "chickenburger"],
+            ["جيز برگر", 3500],
+            ["سموكي برگر", 3500],
+            ["سبايسي برگر", 3500],
+            ["هاني ماسترد برگر", 3500],
+          ],
+        ],
+        شاورما: [
+          "wrap",
+          [
+            ["صاج شاورما دجاج", 2000],
+            ["صاج شاورما لحم", 2500],
+            ["ساندويش شاورما دجاج", 2000],
+            ["ساندويش شاورما لحم", 2500],
+            ["ربع كيلو دجاج", 5000],
+            ["ربع كيلو لحم", 6000],
+            ["نصف كيلو دجاج", 10000],
+            ["نصف كيلو لحم", 12000],
+            ["كيلو شاورما دجاج", 20000],
+            ["كيلو شاورما لحم", 25000],
+          ],
+        ],
+        كنتاكي: [
+          "chicken",
+          [
+            ["كنتاكي 3 قطع", 6000, "1 " + N],
+            ["كنتاكي 5 قطع", 10000, "2 " + N],
+            ["كنتاكي 6 قطع", 12000, "2 " + N],
+            ["كنتاكي 8 قطع", 15000, "3 " + N],
+            ["كنتاكي 12 قطعة", 20000, "4 " + N],
+          ],
+        ],
+        كرسبي: [
+          "chicken",
+          [
+            ["كرسبي 4 قطع", 6000, "1 " + N],
+            ["كرسبي 6 قطع", 10000, "2 " + N],
+            ["كرسبي 8 قطع", 12000, "2 " + N],
+            ["كرسبي 10 قطع", 15000, "3 " + N],
+            ["كرسبي 12 قطعة", 18000, "4 " + N],
+          ],
+        ],
+        الفنكر: [
+          "fries",
+          [
+            ["قدح فنكر", 1000],
+            ["ماعون فنكر وسط", 2000],
+            ["ماعون فنكر كبير", 3000],
+            ["ماعون فنكر بالجبن", 2500],
+            ["ماعون فنكر هاني ماسترد", 2500],
+            ["ماعون فنكر هالبينو سبايسي", 2500],
+            ["باركود فرايز باللحم", 4000],
+            ["كرسبي فرايز", 4000],
+          ],
+        ],
+        الإيطالي: [
+          "🌯",
+          [
+            ["لفم شاورما لحم وسط", 7000],
+            ["لفم شاورما لحم كبير", 10000],
+            ["لفم شاورما دجاج وسط", 7000],
+            ["لفم شاورما دجاج كبير", 10000],
+            ["سبشل إيطالي", 7000],
+            ["صاج إيطالي لحم", 5000],
+            ["صاج إيطالي دجاج", 4500],
+          ],
+        ],
+        مقبلات: [
+          "🥗",
+          [
+            ["مقبلات صغير", 1000],
+            ["مقبلات وسط", 2000],
+            ["مقبلات كبير", 3000],
+          ],
+        ],
+        أجنحة: ["wings.jpeg", [["أجنحة باركود", 5000, "بصلصات مختلفة"]]],
+      };
+      const SZ = ["صغير", "وسط", "كبير"];
 
-// ============ أدوات ============
-const $ = id => document.getElementById(id), fmt = n => n.toLocaleString('en-US');
-const esc = t => String(t).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
-const hash = s => [...s].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7).toString(36);
-const ls = (k, v) => { try { if (v === undefined) return JSON.parse(localStorage.getItem(k)); localStorage.setItem(k, JSON.stringify(v)); } catch (_) {} };
-function say(t){ const e = $('toast'); e.textContent = t; e.style.display = 'block'; clearTimeout(say.t); say.t = setTimeout(() => e.style.display = 'none', 2200); }
+      // ============ أدوات ============
+      const $ = (id) => document.getElementById(id),
+        fmt = (n) => n.toLocaleString("en-US");
+      const esc = (t) =>
+        String(t)
+          .replace(/&/g, "&amp;")
+          .replace(/"/g, "&quot;")
+          .replace(/</g, "&lt;");
+      const hash = (s) =>
+        [...s]
+          .reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7)
+          .toString(36);
+      const ls = (k, v) => {
+        try {
+          if (v === undefined) return JSON.parse(localStorage.getItem(k));
+          localStorage.setItem(k, JSON.stringify(v));
+        } catch (_) {}
+      };
+      function say(t) {
+        const e = $("toast");
+        e.textContent = t;
+        e.style.display = "block";
+        clearTimeout(say.t);
+        say.t = setTimeout(() => (e.style.display = "none"), 2200);
+      }
 
-// ============ التقييم ============
-// R[key] = {s: مجموع النجوم, c: عدد المقيّمين} ، mine[key] = تقييمي أنا
-let R = FB.projectId ? {} : (ls('bf_R') || {}), mine = ls('bf_mine') || {}, fs = null;
-const uid = ls('bf_uid') || (() => { const u = Math.random().toString(36).slice(2) + Date.now().toString(36); ls('bf_uid', u); return u; })();
-function starsHTML(k) {
-  const r = R[k], avg = r ? r.s / r.c : 0, shown = Math.round(avg);
-  let h = '<div class="st" data-k="' + k + '" title="' + (mine[k] ? 'تقييمك: ' + mine[k] : 'اضغط للتقييم') + '">';
-  for (let i = 1; i <= 5; i++) h += '<button data-s="' + i + '" class="' + (i <= shown ? 'on' : '') + '" aria-label="' + i + '">★</button>';
-  return h + '<i>' + (r ? avg.toFixed(1) + ' (' + r.c + ')' : 'قيّم') + '</i></div>';
-}
-async function rate(k, s) {
-  const old = mine[k]; R[k] = R[k] || {s: 0, c: 0};
-  if (old) R[k].s += s - old; else { R[k].s += s; R[k].c++; }   // نفس الزائر = تقييم واحد يتحدّث
-  mine[k] = s; ls('bf_mine', mine);
-  if (!FB.projectId) ls('bf_R', R);
-  document.querySelectorAll('.st[data-k="' + k + '"]').forEach(e => e.outerHTML = starsHTML(k));
-  if (fs) try { await fs.f.setDoc(fs.f.doc(fs.db, 'ratings', k + '_' + uid), {k, s}); say('شكراً لتقييمك ⭐'); }
-          catch (_) { say('تعذر حفظ التقييم بالقاعدة'); }
-  else say('شكراً لتقييمك ⭐');
-}
-(async () => {   // اتصال Firebase (إذا مضبوط)
-  if (!FB.projectId) return;
-  try {
-    const A = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js');
-    const f = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js');
-    fs = {f, db: f.getFirestore(A.initializeApp(FB))};
-    const snap = await f.getDocs(f.collection(fs.db, 'ratings')); R = {}; 
-    snap.forEach(d => { const {k, s} = d.data(); R[k] = R[k] || {s: 0, c: 0}; R[k].s += s; R[k].c++; if (d.id === k + '_' + uid) mine[k] = s; });
-    show(cur);
-  } catch (_) {}
-})();
+      // ============ التقييم ============
+      // R[key] = {s: مجموع النجوم, c: عدد المقيّمين} ، mine[key] = تقييمي أنا
+      let R = FB.projectId ? {} : ls("bf_R") || {},
+        mine = ls("bf_mine") || {},
+        fs = null;
+      const uid =
+        ls("bf_uid") ||
+        (() => {
+          const u =
+            Math.random().toString(36).slice(2) + Date.now().toString(36);
+          ls("bf_uid", u);
+          return u;
+        })();
+      function starsHTML(k) {
+        const r = R[k],
+          avg = r ? r.s / r.c : 0,
+          shown = Math.round(avg);
+        let h =
+          '<div class="st" data-k="' +
+          k +
+          '" title="' +
+          (mine[k] ? "تقييمك: " + mine[k] : "اضغط للتقييم") +
+          '">';
+        for (let i = 1; i <= 5; i++)
+          h +=
+            '<button data-s="' +
+            i +
+            '" class="' +
+            (i <= shown ? "on" : "") +
+            '" aria-label="' +
+            i +
+            '">★</button>';
+        return (
+          h +
+          "<i>" +
+          (r ? avg.toFixed(1) + " (" + r.c + ")" : "قيّم") +
+          "</i></div>"
+        );
+      }
+      async function rate(k, s) {
+        const old = mine[k];
+        R[k] = R[k] || { s: 0, c: 0 };
+        if (old) R[k].s += s - old;
+        else {
+          R[k].s += s;
+          R[k].c++;
+        } // نفس الزائر = تقييم واحد يتحدّث
+        mine[k] = s;
+        ls("bf_mine", mine);
+        if (!FB.projectId) ls("bf_R", R);
+        document
+          .querySelectorAll('.st[data-k="' + k + '"]')
+          .forEach((e) => (e.outerHTML = starsHTML(k)));
+        if (fs)
+          try {
+            await fs.f.setDoc(fs.f.doc(fs.db, "ratings", k + "_" + uid), {
+              k,
+              s,
+            });
+            say("شكراً لتقييمك ⭐");
+          } catch (_) {
+            say("تعذر حفظ التقييم بالقاعدة");
+          }
+        else say("شكراً لتقييمك ⭐");
+      }
+      (async () => {
+        // اتصال Firebase (إذا مضبوط)
+        if (!FB.projectId) return;
+        try {
+          const A =
+            await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+          const f =
+            await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+          fs = { f, db: f.getFirestore(A.initializeApp(FB)) };
+          const snap = await f.getDocs(f.collection(fs.db, "ratings"));
+          R = {};
+          snap.forEach((d) => {
+            const { k, s } = d.data();
+            R[k] = R[k] || { s: 0, c: 0 };
+            R[k].s += s;
+            R[k].c++;
+            if (d.id === k + "_" + uid) mine[k] = s;
+          });
+          show(cur);
+        } catch (_) {}
+      })();
 
-// ============ عرض المنيو ============
-let cur = Object.keys(M)[0];
-function card(cat, it, def) {
-  const k = hash(cat + '|' + it[0]), img = it[3] || def, multi = Array.isArray(it[1]);
-  const imageKey = /^[a-z]+(?:\.(?:webp|jpe?g|png))?$/i.test(img);
-  const imageSrc = /\.[a-z]+$/i.test(img) ? img : img + '.webp';
-  const pic = !imageKey ? '<span>' + img + '</span>' : '<img src="' + imageSrc + '" alt="' + esc(it[0]) + '" loading="lazy">';
-  const act = multi ? '<div class="sz">' + it[1].map((p, i) => '<button class="add" data-n="' + esc(it[0] + ' (' + SZ[i] + ')') + '" data-p="' + p + '"><u>' + SZ[i] + '</u>' + fmt(p) + ' +</button>').join('') + '</div>'
-    : '<div class="pr">' + fmt(it[1]) + '</div><button class="add" data-n="' + esc(it[0]) + '" data-p="' + it[1] + '">+ أضف</button>';
-  return '<article class="card"><div class="ph">' + pic + '</div><div class="bd2"><h3>' + esc(it[0]) + '</h3>' + (it[2] ? '<small>' + esc(it[2]) + '</small>' : '') + starsHTML(k) + '<div class="row">' + act + '</div></div></article>';
-}
-function show(c) {
-  cur = c;
-  $('tabs').innerHTML = Object.keys(M).map(k => '<button class="' + (k === c ? 'on' : '') + '" data-c="' + esc(k) + '">' + k + '</button>').join('');
-  $('grid').innerHTML = M[c][1].map(it => card(c, it, M[c][0])).join('');
-}
-$('tabs').onclick = e => { const b = e.target.closest('button'); if (b) show(b.dataset.c); };
-$('offers-box').innerHTML = OFFERS.map(o => '<div class="of"><img src="' + o[3] + '" alt="' + esc(o[0]) + '" loading="lazy"><div class="bd"><div><h3>' + esc(o[0]) + '</h3><small>' + esc(o[1]) + '</small><b>' + fmt(o[2]) + ' د.ع</b></div><button class="btn add" style="font-size:15px;padding:9px 20px" data-n="' + esc('عرض: ' + o[0]) + '" data-p="' + o[2] + '">أضف للسلة</button></div></div>').join('');
-$('addr').textContent = CFG.address;
-$('maplink').href = CFG.mapUrl || 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(CFG.mapQuery);
-$('phones').innerHTML = CFG.phones.map(p => '<a class="n" href="tel:' + p + '">' + p + '</a>').join('');
-$('walink').href = 'https://wa.me/' + CFG.wa;
-$('iglink').href = 'https://instagram.com/' + CFG.insta; $('iglink').textContent = '@' + CFG.insta;
-show(cur);
+      // ============ عرض المنيو ============
+      let cur = Object.keys(M)[0];
+      function card(cat, it, def) {
+        const k = hash(cat + "|" + it[0]),
+          img = it[3] || def,
+          multi = Array.isArray(it[1]);
+        const imageKey = /^[a-z]+(?:\.(?:webp|jpe?g|png))?$/i.test(img);
+        const imageSrc = /\.[a-z]+$/i.test(img) ? img : img + ".webp";
+        const pic = !imageKey
+          ? "<span>" + img + "</span>"
+          : '<img src="' +
+            imageSrc +
+            '" alt="' +
+            esc(it[0]) +
+            '" loading="lazy">';
+        const act = multi
+          ? '<div class="sz">' +
+            it[1]
+              .map(
+                (p, i) =>
+                  '<button class="add" data-n="' +
+                  esc(it[0] + " (" + SZ[i] + ")") +
+                  '" data-p="' +
+                  p +
+                  '"><u>' +
+                  SZ[i] +
+                  "</u>" +
+                  fmt(p) +
+                  " +</button>",
+              )
+              .join("") +
+            "</div>"
+          : '<div class="pr">' +
+            fmt(it[1]) +
+            '</div><button class="add" data-n="' +
+            esc(it[0]) +
+            '" data-p="' +
+            it[1] +
+            '">+ أضف</button>';
+        return (
+          '<article class="card"><div class="ph">' +
+          pic +
+          '</div><div class="bd2"><h3>' +
+          esc(it[0]) +
+          "</h3>" +
+          (it[2] ? "<small>" + esc(it[2]) + "</small>" : "") +
+          starsHTML(k) +
+          '<div class="row">' +
+          act +
+          "</div></div></article>"
+        );
+      }
+      function show(c) {
+        cur = c;
+        $("tabs").innerHTML = Object.keys(M)
+          .map(
+            (k) =>
+              '<button class="' +
+              (k === c ? "on" : "") +
+              '" data-c="' +
+              esc(k) +
+              '">' +
+              k +
+              "</button>",
+          )
+          .join("");
+        $("grid").innerHTML = M[c][1]
+          .map((it) => card(c, it, M[c][0]))
+          .join("");
+      }
+      $("tabs").onclick = (e) => {
+        const b = e.target.closest("button");
+        if (b) show(b.dataset.c);
+      };
+      $("offers-box").innerHTML = OFFERS.map(
+        (o) =>
+          '<div class="of"><img src="' +
+          o[3] +
+          '" alt="' +
+          esc(o[0]) +
+          '" loading="lazy"><div class="bd"><div><h3>' +
+          esc(o[0]) +
+          "</h3><small>" +
+          esc(o[1]) +
+          "</small><b>" +
+          fmt(o[2]) +
+          ' د.ع</b></div><button class="btn add" style="font-size:15px;padding:9px 20px" data-n="' +
+          esc("عرض: " + o[0]) +
+          '" data-p="' +
+          o[2] +
+          '">أضف للسلة</button></div></div>',
+      ).join("");
+      $("addr").textContent = CFG.address;
+      $("maplink").href =
+        CFG.mapUrl ||
+        "https://www.google.com/maps/search/?api=1&query=" +
+          encodeURIComponent(CFG.mapQuery);
+      $("phones").innerHTML = CFG.phones
+        .map((p) => '<a class="n" href="tel:' + p + '">' + p + "</a>")
+        .join("");
+      $("walink").href = "https://wa.me/" + CFG.wa;
+      $("iglink").href = "https://instagram.com/" + CFG.insta;
+      $("iglink").textContent = "@" + CFG.insta;
+      show(cur);
 
-// ============ السلة ============
-let cart = ls('bf_cart') || {};
-function draw() {
-  const ks = Object.keys(cart); let t = 0, c = 0;
-  $('items').innerHTML = ks.length ? ks.map(k => { const i = cart[k]; t += i.p * i.q; c += i.q;
-    return '<div class="ci"><div>' + esc(k) + '<small>' + fmt(i.p) + ' د.ع</small></div><div class="qt"><button data-a="-1" data-k="' + esc(k) + '">−</button><b>' + i.q + '</b><button data-a="1" data-k="' + esc(k) + '">+</button></div></div>';
-  }).join('') : '<p style="opacity:.6;text-align:center;padding:20px">السلة فارغة</p>';
-  $('tot').textContent = fmt(t); $('cnt').textContent = c; $('form').style.display = ks.length ? 'block' : 'none'; ls('bf_cart', cart);
-}
-draw();
-document.addEventListener('click', e => {
-  const s = e.target.closest('.st button');
-  if (s) return rate(s.parentElement.dataset.k, +s.dataset.s);
-  const b = e.target.closest('.add');
-  if (b) { const k = b.dataset.n; cart[k] = cart[k] || {p: +b.dataset.p, q: 0}; cart[k].q++; draw(); return say('تمت الإضافة للسلة 🛒'); }
-  const q = e.target.closest('.qt button');
-  if (q) { const k = q.dataset.k; cart[k].q += +q.dataset.a; if (cart[k].q <= 0) delete cart[k]; draw(); }
-});
-$('cartbtn').onclick = () => $('cart').classList.add('open');
-$('cx').onclick = () => $('cart').classList.remove('open');
-$('cart').onclick = e => { if (e.target === $('cart')) $('cart').classList.remove('open'); };
-$('send').onclick = () => {
-  const v = id => $(id).value.trim(), ks = Object.keys(cart);
-  if (!ks.length) return;
-  if (!v('fn') || !v('fa')) return say('اكتب الاسم والمنطقة');
-  if (v('fp').length < 10) return say('اكتب رقم هاتف صحيح');
-  let t = 0;
-  const lines = ks.map(k => { const i = cart[k]; t += i.p * i.q; return '• ' + k + ' × ' + i.q + ' = ' + fmt(i.p * i.q); });
-  const m = ['طلب جديد من ' + CFG.name, '', 'الاسم: ' + v('fn'), 'الهاتف: ' + v('fp'), 'المنطقة: ' + v('fa'), 'أقرب نقطة دالة: ' + (v('fl') || '-'), '', 'الطلب:', ...lines, '', 'المجموع: ' + fmt(t) + ' د.ع'];
-  if (v('fz')) m.push('', 'ملاحظات: ' + v('fz'));
-  window.open('https://wa.me/' + CFG.wa + '?text=' + encodeURIComponent(m.join('\n')), '_blank');
-  say('اضغط إرسال بواتساب لإتمام الطلب');
-};
-$('fp').addEventListener('input', e => {
-  e.target.value = e.target.value.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/\D/g, '');
-});
-</script>
-</body>
+      // ============ السلة ============
+      let cart = ls("bf_cart") || {};
+      function draw() {
+        const ks = Object.keys(cart);
+        let t = 0,
+          c = 0;
+        $("items").innerHTML = ks.length
+          ? ks
+              .map((k) => {
+                const i = cart[k];
+                t += i.p * i.q;
+                c += i.q;
+                return (
+                  '<div class="ci"><div>' +
+                  esc(k) +
+                  "<small>" +
+                  fmt(i.p) +
+                  ' د.ع</small></div><div class="qt"><button data-a="-1" data-k="' +
+                  esc(k) +
+                  '">−</button><b>' +
+                  i.q +
+                  '</b><button data-a="1" data-k="' +
+                  esc(k) +
+                  '">+</button></div></div>'
+                );
+              })
+              .join("")
+          : '<p style="opacity:.6;text-align:center;padding:20px">السلة فارغة</p>';
+        $("tot").textContent = fmt(t);
+        $("cnt").textContent = c;
+        $("form").style.display = ks.length ? "block" : "none";
+        ls("bf_cart", cart);
+      }
+      draw();
+      document.addEventListener("click", (e) => {
+        const s = e.target.closest(".st button");
+        if (s) return rate(s.parentElement.dataset.k, +s.dataset.s);
+        const b = e.target.closest(".add");
+        if (b) {
+          const k = b.dataset.n;
+          cart[k] = cart[k] || { p: +b.dataset.p, q: 0 };
+          cart[k].q++;
+          draw();
+          return say("تمت الإضافة للسلة 🛒");
+        }
+        const q = e.target.closest(".qt button");
+        if (q) {
+          const k = q.dataset.k;
+          cart[k].q += +q.dataset.a;
+          if (cart[k].q <= 0) delete cart[k];
+          draw();
+        }
+      });
+      $("cartbtn").onclick = () => $("cart").classList.add("open");
+      $("cx").onclick = () => $("cart").classList.remove("open");
+      $("cart").onclick = (e) => {
+        if (e.target === $("cart")) $("cart").classList.remove("open");
+      };
+      $("send").onclick = () => {
+        const v = (id) => $(id).value.trim(),
+          ks = Object.keys(cart);
+        if (!ks.length) return;
+        if (!v("fn") || !v("fa")) return say("اكتب الاسم والمنطقة");
+        if (v("fp").length < 10) return say("اكتب رقم هاتف صحيح");
+        let t = 0;
+        const lines = ks.map((k) => {
+          const i = cart[k];
+          t += i.p * i.q;
+          return "• " + k + " × " + i.q + " = " + fmt(i.p * i.q);
+        });
+        const m = [
+          "طلب جديد من " + CFG.name,
+          "",
+          "الاسم: " + v("fn"),
+          "الهاتف: " + v("fp"),
+          "المنطقة: " + v("fa"),
+          "أقرب نقطة دالة: " + (v("fl") || "-"),
+          "",
+          "الطلب:",
+          ...lines,
+          "",
+          "المجموع: " + fmt(t) + " د.ع",
+        ];
+        if (v("fz")) m.push("", "ملاحظات: " + v("fz"));
+        window.open(
+          "https://wa.me/" +
+            CFG.wa +
+            "?text=" +
+            encodeURIComponent(m.join("\n")),
+          "_blank",
+        );
+        say("اضغط إرسال بواتساب لإتمام الطلب");
+      };
+      $("fp").addEventListener("input", (e) => {
+        e.target.value = e.target.value
+          .replace(/[٠-٩]/g, (d) => "٠١٢٣٤٥٦٧٨٩".indexOf(d))
+          .replace(/\D/g, "");
+      });
+    </script>
+  </body>
 </html>
