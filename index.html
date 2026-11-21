@@ -23,17 +23,30 @@
         --shadow: 0 8px 24px #30282a0d;
         --header-height: 58px;
       }
-      * { box-sizing: border-box; margin: 0; }
-      html { scroll-behavior: smooth; scroll-padding-top: 130px; }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 130px;
+      }
       body {
         background: var(--bg);
         color: var(--ink);
         font-family: "Cairo", Tahoma, sans-serif;
         line-height: 1.65;
       }
-      button, input { font: inherit; }
-      button { cursor: pointer; }
-      button:focus-visible, a:focus-visible, input:focus-visible {
+      button,
+      input {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible {
         outline: 3px solid var(--gold);
         outline-offset: 3px;
       }
@@ -60,8 +73,16 @@
         font-weight: 800;
         white-space: nowrap;
       }
-      .lg img { width: 36px; height: 36px; border-radius: 50%; }
-      nav { display: flex; align-items: center; gap: 10px; }
+      .lg img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
       nav a {
         color: var(--ink);
         text-decoration: none;
@@ -76,8 +97,14 @@
         background: var(--red);
         font-weight: 800;
       }
-      .cartbtn:hover, .add:hover { background: var(--red-deep); }
-      .hero { text-align: center; padding-bottom: 18px; }
+      .cartbtn:hover,
+      .add:hover {
+        background: var(--red-deep);
+      }
+      .hero {
+        text-align: center;
+        padding-bottom: 18px;
+      }
       .banner {
         position: relative;
         height: clamp(190px, 52vw, 360px);
@@ -91,9 +118,11 @@
         height: 100%;
         object-fit: cover;
         opacity: 0;
-        transition: opacity .65s ease;
+        transition: opacity 0.65s ease;
       }
-      .slide.on { opacity: 1; }
+      .slide.on {
+        opacity: 1;
+      }
       .banner:after {
         content: "";
         position: absolute;
@@ -119,7 +148,11 @@
         border-radius: 50%;
         background: #ffffff99;
       }
-      .dots button.on { width: 20px; border-radius: 8px; background: white; }
+      .dots button.on {
+        width: 20px;
+        border-radius: 8px;
+        background: white;
+      }
       .brand-mark {
         position: relative;
         z-index: 2;
@@ -132,7 +165,12 @@
         background: white;
         box-shadow: 0 8px 24px #23171930;
       }
-      .brand-mark img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+      .brand-mark img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+      }
       .hero h1 {
         margin-top: 6px;
         color: var(--red);
@@ -140,8 +178,16 @@
         font-weight: 800;
         line-height: 1.35;
       }
-      .hero p { margin: 2px 0 12px; color: var(--muted); }
-      .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+      .hero p {
+        margin: 2px 0 12px;
+        color: var(--muted);
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
       .chip {
         padding: 5px 13px;
         border: 1px solid #e8dfd3;
@@ -151,7 +197,11 @@
         font-size: 13px;
         font-weight: 700;
       }
-      .sec { max-width: 1120px; margin: auto; padding: 24px 16px; }
+      .sec {
+        max-width: 1120px;
+        margin: auto;
+        padding: 24px 16px;
+      }
       .sec h2 {
         color: var(--red);
         font-size: clamp(22px, 5vw, 28px);
@@ -167,8 +217,16 @@
         border-radius: 4px;
         background: var(--gold);
       }
-      .sub { margin: 6px 0 16px; color: var(--muted); font-size: 13px; }
-      .search-wrap { max-width: 720px; margin: 8px auto 0; padding: 0 16px 12px; }
+      .sub {
+        margin: 6px 0 16px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .search-wrap {
+        max-width: 720px;
+        margin: 8px auto 0;
+        padding: 0 16px 12px;
+      }
       .searchbox {
         height: 48px;
         display: flex;
@@ -180,7 +238,10 @@
         background: white;
         box-shadow: 0 4px 16px #30282a08;
       }
-      .searchbox span { color: var(--muted); font-size: 20px; }
+      .searchbox span {
+        color: var(--muted);
+        font-size: 20px;
+      }
       .searchbox input {
         width: 100%;
         border: 0;
@@ -205,7 +266,10 @@
         padding: 0 16px 2px;
         scrollbar-width: none;
       }
-      .category-tiles::-webkit-scrollbar, .offers::-webkit-scrollbar { display: none; }
+      .category-tiles::-webkit-scrollbar,
+      .offers::-webkit-scrollbar {
+        display: none;
+      }
       .category-tile {
         position: relative;
         flex: 0 0 102px;
@@ -246,10 +310,20 @@
         background: linear-gradient(145deg, #f8e9ca, #d5b9ab);
         font-size: 40px;
       }
-      .category-tile b { font-size: 12px; white-space: nowrap; }
-      .category-tile.on { border-color: var(--gold); box-shadow: 0 0 0 2px #eec14d55; }
-      .category-tile.all { background: linear-gradient(145deg, #59464a, #20191c); }
-      .category-tile.all:after { display: none; }
+      .category-tile b {
+        font-size: 12px;
+        white-space: nowrap;
+      }
+      .category-tile.on {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 2px #eec14d55;
+      }
+      .category-tile.all {
+        background: linear-gradient(145deg, #59464a, #20191c);
+      }
+      .category-tile.all:after {
+        display: none;
+      }
       .offers {
         display: flex;
         gap: 14px;
@@ -267,8 +341,15 @@
         box-shadow: var(--shadow);
         scroll-snap-align: start;
       }
-      .offer-picture { position: relative; }
-      .of img { display: block; width: 100%; height: 165px; object-fit: cover; }
+      .offer-picture {
+        position: relative;
+      }
+      .of img {
+        display: block;
+        width: 100%;
+        height: 165px;
+        object-fit: cover;
+      }
       .discount {
         position: absolute;
         top: 10px;
@@ -280,12 +361,36 @@
         font-size: 12px;
         font-weight: 800;
       }
-      .of .bd { padding: 12px 14px 14px; }
-      .of h3 { font-size: 15px; font-weight: 800; }
-      .of small { display: block; min-height: 24px; color: var(--muted); font-size: 12px; }
-      .offer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 9px; }
-      .of b { color: var(--red); font-size: 17px; }
-      .old-price { margin-inline-start: 5px; color: var(--muted); font-size: 12px; text-decoration: line-through; }
+      .of .bd {
+        padding: 12px 14px 14px;
+      }
+      .of h3 {
+        font-size: 15px;
+        font-weight: 800;
+      }
+      .of small {
+        display: block;
+        min-height: 24px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .offer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-top: 9px;
+      }
+      .of b {
+        color: var(--red);
+        font-size: 17px;
+      }
+      .old-price {
+        margin-inline-start: 5px;
+        color: var(--muted);
+        font-size: 12px;
+        text-decoration: line-through;
+      }
       .offer-add {
         border: 0;
         border-radius: 20px;
@@ -296,8 +401,13 @@
         font-weight: 700;
         white-space: nowrap;
       }
-      #menu { padding-top: 20px; }
-      .menu-category { margin: 0 0 26px; scroll-margin-top: 194px; }
+      #menu {
+        padding-top: 20px;
+      }
+      .menu-category {
+        margin: 0 0 26px;
+        scroll-margin-top: 194px;
+      }
       .category-heading {
         display: flex;
         align-items: center;
@@ -305,8 +415,16 @@
         gap: 12px;
         margin-bottom: 10px;
       }
-      .category-name { display: flex; align-items: center; gap: 9px; color: var(--ink); font-size: 19px; font-weight: 800; }
-      .category-name img, .category-name .heading-emoji {
+      .category-name {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: var(--ink);
+        font-size: 19px;
+        font-weight: 800;
+      }
+      .category-name img,
+      .category-name .heading-emoji {
         width: 34px;
         height: 34px;
         display: grid;
@@ -316,8 +434,18 @@
         object-fit: cover;
         font-size: 20px;
       }
-      .item-count { color: var(--muted); font-size: 12px; white-space: nowrap; }
-      .menu-list { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: white; box-shadow: var(--shadow); }
+      .item-count {
+        color: var(--muted);
+        font-size: 12px;
+        white-space: nowrap;
+      }
+      .menu-list {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: white;
+        box-shadow: var(--shadow);
+      }
       .card {
         display: flex;
         direction: ltr;
@@ -326,7 +454,9 @@
         padding: 12px;
         border-bottom: 1px solid #eee9e5;
       }
-      .card:last-child { border-bottom: 0; }
+      .card:last-child {
+        border-bottom: 0;
+      }
       .ph {
         position: relative;
         flex: 0 0 100px;
@@ -338,8 +468,15 @@
         border-radius: 15px;
         background: linear-gradient(145deg, #fffdfa, #f4e9d8);
       }
-      .ph img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; }
-      .ph span { font-size: 44px; }
+      .ph img {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        object-fit: cover;
+      }
+      .ph span {
+        font-size: 44px;
+      }
       .image-add {
         position: absolute;
         bottom: -5px;
@@ -356,8 +493,20 @@
         line-height: 1;
         box-shadow: 0 3px 9px #30282a24;
       }
-      .bd2 { min-width: 0; flex: 1; display: flex; flex-direction: column; direction: rtl; gap: 2px; }
-      .bd2 h3 { color: var(--ink); font-size: 15px; font-weight: 800; line-height: 1.5; }
+      .bd2 {
+        min-width: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        direction: rtl;
+        gap: 2px;
+      }
+      .bd2 h3 {
+        color: var(--ink);
+        font-size: 15px;
+        font-weight: 800;
+        line-height: 1.5;
+      }
       .bd2 small {
         display: -webkit-box;
         overflow: hidden;
@@ -368,13 +517,45 @@
         -webkit-line-clamp: 2;
         line-clamp: 2;
       }
-      .st { display: flex; align-items: center; align-self: flex-start; }
-      .st button { padding: 0 1px; border: 0; color: #d9d0c5; background: none; font-size: 17px; line-height: 1; }
-      .st button.on { color: var(--gold); }
-      .st i { margin-inline-start: 5px; color: var(--muted); font-size: 10px; font-style: normal; }
-      .row { margin-top: auto; padding-top: 4px; display: flex; align-items: center; gap: 8px; }
-      .pr { color: var(--red); font-size: 14px; font-weight: 800; }
-      .sz { display: flex; flex-wrap: wrap; gap: 5px; }
+      .st {
+        display: flex;
+        align-items: center;
+        align-self: flex-start;
+      }
+      .st button {
+        padding: 0 1px;
+        border: 0;
+        color: #d9d0c5;
+        background: none;
+        font-size: 17px;
+        line-height: 1;
+      }
+      .st button.on {
+        color: var(--gold);
+      }
+      .st i {
+        margin-inline-start: 5px;
+        color: var(--muted);
+        font-size: 10px;
+        font-style: normal;
+      }
+      .row {
+        margin-top: auto;
+        padding-top: 4px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .pr {
+        color: var(--red);
+        font-size: 14px;
+        font-weight: 800;
+      }
+      .sz {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
       .sz .add {
         border: 1px solid #eec14d88;
         border-radius: 18px;
@@ -384,9 +565,21 @@
         font-size: 11px;
         font-weight: 700;
       }
-      .sz u { margin-inline-end: 3px; text-decoration: none; }
-      .no-results { padding: 30px 14px; color: var(--muted); text-align: center; }
-      .contact-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+      .sz u {
+        margin-inline-end: 3px;
+        text-decoration: none;
+      }
+      .no-results {
+        padding: 30px 14px;
+        color: var(--muted);
+        text-align: center;
+      }
+      .contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+      }
       .social-link {
         width: 48px;
         height: 48px;
@@ -400,21 +593,30 @@
         font-size: 21px;
         text-decoration: none;
       }
-      .wa-wide {
-        flex: 1 1 190px;
-        min-height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        border-radius: 26px;
+      .social-link.whatsapp {
+        border-color: #25d366;
         color: white;
-        background: #198754;
-        font-weight: 800;
-        text-decoration: none;
+        background: #25d366;
       }
-      .contact-details { margin-top: 14px; color: var(--muted); font-size: 13px; }
-      .contact-details a { color: var(--red); font-weight: 700; }
+      .social-link.location {
+        border-color: var(--red);
+        color: white;
+        background: var(--red);
+      }
+      .contact-details {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .contact-details a {
+        color: var(--red);
+        font-weight: 700;
+      }
+      #phones {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
       footer {
         margin-top: 20px;
         padding: 22px 18px;
@@ -424,8 +626,14 @@
         text-align: center;
         font-size: 13px;
       }
-      .credit { margin-top: 6px; font-size: 12px; }
-      .credit a { color: white; font-weight: 800; }
+      .credit {
+        margin-top: 6px;
+        font-size: 12px;
+      }
+      .credit a {
+        color: white;
+        font-weight: 800;
+      }
       .cart {
         position: fixed;
         inset: 0;
@@ -436,7 +644,9 @@
         background: #24191ab0;
         backdrop-filter: blur(3px);
       }
-      .cart.open { display: flex; }
+      .cart.open {
+        display: flex;
+      }
       .cp {
         width: 100%;
         max-width: 520px;
@@ -448,10 +658,28 @@
         background: white;
         box-shadow: 0 -12px 40px #24191a20;
       }
-      .ch, .ci, .qt { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-      .ch button { border: 0; color: var(--red); background: none; font-size: 22px; }
-      .ci { padding: 12px 0; border-bottom: 1px dashed var(--line); }
-      .ci small { display: block; color: var(--red); }
+      .ch,
+      .ci,
+      .qt {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .ch button {
+        border: 0;
+        color: var(--red);
+        background: none;
+        font-size: 22px;
+      }
+      .ci {
+        padding: 12px 0;
+        border-bottom: 1px dashed var(--line);
+      }
+      .ci small {
+        display: block;
+        color: var(--red);
+      }
       .qt button {
         width: 30px;
         height: 30px;
@@ -461,10 +689,18 @@
         background: none;
         font-size: 18px;
       }
-      .tot { margin: 14px 0; font-size: 18px; }
-      .tot b { color: var(--red); }
-      #form { display: none; }
-      #form input, #form textarea {
+      .tot {
+        margin: 14px 0;
+        font-size: 18px;
+      }
+      .tot b {
+        color: var(--red);
+      }
+      #form {
+        display: none;
+      }
+      #form input,
+      #form textarea {
         width: 100%;
         margin-bottom: 8px;
         padding: 10px 12px;
@@ -497,25 +733,68 @@
         box-shadow: 0 8px 24px #35272a30;
       }
       @media (min-width: 760px) {
-        :root { --header-height: 64px; }
-        .hero { padding-bottom: 24px; }
-        .brand-mark { width: 116px; height: 116px; margin-top: -58px; }
-        .sec { padding: 30px 24px; }
-        .of { flex-basis: 320px; }
-        .card { gap: 16px; padding: 14px 16px; }
-        .ph { flex-basis: 108px; width: 108px; height: 100px; }
-        .menu-category { scroll-margin-top: 205px; }
+        :root {
+          --header-height: 64px;
+        }
+        .hero {
+          padding-bottom: 24px;
+        }
+        .brand-mark {
+          width: 116px;
+          height: 116px;
+          margin-top: -58px;
+        }
+        .sec {
+          padding: 30px 24px;
+        }
+        .of {
+          flex-basis: 320px;
+        }
+        .card {
+          gap: 16px;
+          padding: 14px 16px;
+        }
+        .ph {
+          flex-basis: 108px;
+          width: 108px;
+          height: 100px;
+        }
+        .menu-category {
+          scroll-margin-top: 205px;
+        }
       }
       @media (max-width: 380px) {
-        .lg { gap: 5px; font-size: 14px; }
-        .lg img { width: 32px; height: 32px; }
-        nav { gap: 6px; }
-        nav a { font-size: 11px; }
-        .card { gap: 9px; padding: 10px; }
-        .ph { flex-basis: 88px; width: 88px; height: 92px; }
+        .lg {
+          gap: 5px;
+          font-size: 14px;
+        }
+        .lg img {
+          width: 32px;
+          height: 32px;
+        }
+        nav {
+          gap: 6px;
+        }
+        nav a {
+          font-size: 11px;
+        }
+        .card {
+          gap: 9px;
+          padding: 10px;
+        }
+        .ph {
+          flex-basis: 88px;
+          width: 88px;
+          height: 92px;
+        }
       }
       @media (prefers-reduced-motion: reduce) {
-        *, *:before, *:after { scroll-behavior: auto !important; transition: none !important; }
+        *,
+        *:before,
+        *:after {
+          scroll-behavior: auto !important;
+          transition: none !important;
+        }
       }
     </style>
   </head>
@@ -547,7 +826,12 @@
     <div class="search-wrap">
       <label class="searchbox" for="menu-search">
         <span aria-hidden="true">⌕</span>
-        <input id="menu-search" type="search" placeholder="ابحث عن وجبتك..." autocomplete="off" />
+        <input
+          id="menu-search"
+          type="search"
+          placeholder="ابحث عن وجبتك..."
+          autocomplete="off"
+        />
       </label>
     </div>
     <div class="category-shell">
@@ -571,7 +855,6 @@
       <div class="contact-row" id="contact-links"></div>
       <div class="contact-details">
         <span id="addr"></span>
-        <a id="maplink" target="_blank" rel="noopener" hidden>افتح الموقع على الخريطة</a>
         <div id="phones"></div>
       </div>
     </section>
@@ -616,7 +899,7 @@
       const CFG = {
         name: "باركود فود",
         wa: "9647741911911",
-        phones: ["07741911911", "07761911911"],
+        phones: ["07741911911",  "07761911911"],
         address: "قطاع 20 قرب تقاطع الكيارة، بغداد",
         mapQuery: "تقاطع الكيارة قطاع 20 بغداد",
         mapUrl:
@@ -943,7 +1226,13 @@
           if (!/^[a-z]+(?:\.(?:webp|jpe?g|png))?$/i.test(key))
             return '<span class="' + cssClass + '">' + key + "</span>";
           const src = /\.[a-z]+$/i.test(key) ? key : key + ".webp";
-          return '<img class="' + cssClass + '" src="' + src + '" alt="" loading="lazy">';
+          return (
+            '<img class="' +
+            cssClass +
+            '" src="' +
+            src +
+            '" alt="" loading="lazy">'
+          );
         };
         $("tabs").innerHTML =
           '<button class="category-tile all on" data-c="*" aria-label="كل الأقسام"><b>الكل</b></button>' +
@@ -973,7 +1262,7 @@
               esc(k) +
               '</h3><span class="item-count">' +
               M[k][1].length +
-              " أصناف</span></div><div class=\"menu-list\">" +
+              ' أصناف</span></div><div class="menu-list">' +
               M[k][1].map((it) => card(k, it, M[k][0])).join("") +
               "</div></section>",
           )
@@ -988,16 +1277,17 @@
           $("menu").scrollIntoView({ behavior: "smooth" });
         } else {
           setActive(b.dataset.c);
-          $("category-" + hash(b.dataset.c)).scrollIntoView({ behavior: "smooth" });
+          $("category-" + hash(b.dataset.c)).scrollIntoView({
+            behavior: "smooth",
+          });
         }
       };
       function setActive(category) {
-        $("tabs").querySelectorAll(".category-tile").forEach((tile) =>
-          tile.classList.toggle(
-            "on",
-            tile.dataset.c === (category || "*"),
-          ),
-        );
+        $("tabs")
+          .querySelectorAll(".category-tile")
+          .forEach((tile) =>
+            tile.classList.toggle("on", tile.dataset.c === (category || "*")),
+          );
       }
       let sectionObserver;
       function observeCategories() {
@@ -1013,7 +1303,10 @@
               sections.find((section) => {
                 const rect = section.getBoundingClientRect();
                 return rect.top <= line && rect.bottom > line;
-              }) || sections.find((section) => section.getBoundingClientRect().top > line);
+              }) ||
+              sections.find(
+                (section) => section.getBoundingClientRect().top > line,
+              );
             if (active) setActive(active.dataset.category);
             else if (window.scrollY < $("menu").offsetTop) setActive("*");
           },
@@ -1038,28 +1331,29 @@
           matches += count;
         });
         $("no-results").hidden = matches > 0;
-        $("tabs").querySelectorAll(".category-tile[data-c]").forEach((tile) => {
-          tile.hidden =
-            tile.dataset.c !== "*" &&
-            !$("category-" + hash(tile.dataset.c)).matches(":not([hidden])");
-        });
+        $("tabs")
+          .querySelectorAll(".category-tile[data-c]")
+          .forEach((tile) => {
+            tile.hidden =
+              tile.dataset.c !== "*" &&
+              !$("category-" + hash(tile.dataset.c)).matches(":not([hidden])");
+          });
         if (!$("tabs").querySelector(".category-tile.on:not([hidden])"))
           setActive("*");
         observeCategories();
       }
       $("menu-search").addEventListener("input", applySearch);
-      $("offers-box").innerHTML = OFFERS.map(
-        (o) => {
-          const discount = o[4]
-            ? Math.round(((o[4] - o[2]) / o[4]) * 100)
-            : 0;
-          return (
+      $("offers-box").innerHTML = OFFERS.map((o) => {
+        const discount = o[4] ? Math.round(((o[4] - o[2]) / o[4]) * 100) : 0;
+        return (
           '<article class="of"><div class="offer-picture"><img src="' +
           o[3] +
           '" alt="' +
           esc(o[0]) +
           '" loading="lazy">' +
-          (discount > 0 ? '<span class="discount">-' + discount + "%</span>" : "") +
+          (discount > 0
+            ? '<span class="discount">-' + discount + "%</span>"
+            : "") +
           '</div><div class="bd"><h3>' +
           esc(o[0]) +
           "</h3><small>" +
@@ -1073,9 +1367,8 @@
           '" data-p="' +
           o[2] +
           '">أضف للسلة</button></div></div></article>'
-          );
-        },
-      ).join("");
+        );
+      }).join("");
       $("restaurant-name").textContent = CFG.name;
       $("delivery-chip").hidden = !CFG.deliveryMin;
       $("delivery-chip").textContent = CFG.deliveryMin
@@ -1101,7 +1394,9 @@
       let slideIndex = 0;
       function showSlide(index) {
         slideIndex = index % slides.length;
-        slides.forEach((slide, i) => slide.classList.toggle("on", i === slideIndex));
+        slides.forEach((slide, i) =>
+          slide.classList.toggle("on", i === slideIndex),
+        );
         $("slide-dots")
           .querySelectorAll("button")
           .forEach((dot, i) => dot.classList.toggle("on", i === slideIndex));
@@ -1112,17 +1407,16 @@
       };
       setInterval(() => showSlide(slideIndex + 1), 4000);
       $("addr").textContent = CFG.address;
-      $("maplink").href = CFG.mapUrl ||
-        (CFG.mapQuery
-          ? "https://www.google.com/maps/search/?api=1&query=" +
-            encodeURIComponent(CFG.mapQuery)
-          : "");
-      $("maplink").hidden = !CFG.mapUrl && !CFG.mapQuery;
       $("phones").innerHTML = CFG.phones
-        .map((p) => '<a href="tel:' + encodeURIComponent(p) + '">' + esc(p) + "</a>")
+        .map(
+          (p) =>
+            '<a href="tel:' + encodeURIComponent(p) + '">' + esc(p) + "</a>",
+        )
         .join("");
-      const socialLink = (icon, href, label) =>
-        '<a class="social-link" href="' +
+      const socialLink = (icon, href, label, className = "") =>
+        '<a class="social-link' +
+        (className ? " " + className : "") +
+        '" href="' +
         href +
         '" aria-label="' +
         label +
@@ -1133,24 +1427,47 @@
         ">" +
         icon +
         "</a>";
+      const mapHref =
+        CFG.mapUrl ||
+        (CFG.mapQuery
+          ? "https://www.google.com/maps/search/?api=1&query=" +
+            encodeURIComponent(CFG.mapQuery)
+          : "");
       $("contact-links").innerHTML =
         (CFG.phones[0]
           ? socialLink("☎", "tel:" + encodeURIComponent(CFG.phones[0]), "اتصال")
           : "") +
         (CFG.tiktok
-          ? socialLink("♪", "https://www.tiktok.com/@" + encodeURIComponent(CFG.tiktok), "تيك توك")
+          ? socialLink(
+              "♪",
+              "https://www.tiktok.com/@" + encodeURIComponent(CFG.tiktok),
+              "تيك توك",
+            )
           : "") +
         (CFG.facebook
-          ? socialLink("f", "https://www.facebook.com/" + encodeURIComponent(CFG.facebook), "فيسبوك")
+          ? socialLink(
+              "f",
+              "https://www.facebook.com/" + encodeURIComponent(CFG.facebook),
+              "فيسبوك",
+            )
           : "") +
         (CFG.insta
-          ? socialLink("◎", "https://instagram.com/" + encodeURIComponent(CFG.insta), "انستغرام")
+          ? socialLink(
+              "◎",
+              "https://instagram.com/" + encodeURIComponent(CFG.insta),
+              "انستغرام",
+            )
           : "") +
         (CFG.wa
-          ? socialLink("◉", "https://wa.me/" + encodeURIComponent(CFG.wa), "واتساب") +
-            '<a class="wa-wide" href="https://wa.me/' +
-            encodeURIComponent(CFG.wa) +
-            '" target="_blank" rel="noopener">◉ تواصل عبر واتساب</a>'
+          ? socialLink(
+              "◉",
+              "https://wa.me/" + encodeURIComponent(CFG.wa),
+              "واتساب",
+              "whatsapp",
+            )
+          : "") +
+        (mapHref
+          ? socialLink("⌖", mapHref, "الموقع على الخريطة", "location")
           : "");
       show(cur);
 
