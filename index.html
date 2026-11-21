@@ -11,593 +11,511 @@
     />
     <style>
       :root {
-        --red: #b43a45;
-        --red-deep: #ac3b3f;
-        --gold: #edc24f;
+        --red: #b5384a;
+        --red-deep: #922b3b;
+        --gold: #eec14d;
         --gold-wash: #fbf2d9;
-        --ink: #35272a;
-        --muted: #78696a;
-        --bg: #faf8f3;
+        --ink: #30282a;
+        --muted: #817779;
+        --bg: #f5f3ef;
         --surface: #fff;
-        --line: #e9e1d8;
-        --shadow: 0 12px 32px #35272a0d;
+        --line: #e9e4df;
+        --shadow: 0 8px 24px #30282a0d;
+        --header-height: 58px;
       }
-      * {
-        box-sizing: border-box;
-        margin: 0;
-      }
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 76px;
-      }
+      * { box-sizing: border-box; margin: 0; }
+      html { scroll-behavior: smooth; scroll-padding-top: 130px; }
       body {
         background: var(--bg);
         color: var(--ink);
         font-family: "Cairo", Tahoma, sans-serif;
-        line-height: 1.7;
+        line-height: 1.65;
+      }
+      button, input { font: inherit; }
+      button { cursor: pointer; }
+      button:focus-visible, a:focus-visible, input:focus-visible {
+        outline: 3px solid var(--gold);
+        outline-offset: 3px;
       }
       header {
+        height: var(--header-height);
         position: sticky;
         top: 0;
-        z-index: 9;
+        z-index: 12;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 14px;
-        padding: 10px max(20px, calc((100vw - 1120px) / 2));
-        background: #faf8f3ed;
+        gap: 12px;
+        padding: 6px max(16px, calc((100vw - 1120px) / 2));
+        background: #f5f3eff2;
         backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--line);
       }
       .lg {
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-weight: 800;
+        gap: 8px;
         color: var(--red);
-        font-size: 18px;
+        font-size: 16px;
+        font-weight: 800;
         white-space: nowrap;
       }
-      .lg img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        box-shadow: 0 3px 10px #35272a18;
-      }
-      nav {
-        display: flex;
-        align-items: center;
-        gap: clamp(10px, 2vw, 24px);
-      }
+      .lg img { width: 36px; height: 36px; border-radius: 50%; }
+      nav { display: flex; align-items: center; gap: 10px; }
       nav a {
         color: var(--ink);
         text-decoration: none;
-        font-size: 14px;
-        font-weight: 600;
-        transition: color 0.2s;
-      }
-      nav a:hover {
-        color: var(--red);
-      }
-      button {
-        font: inherit;
-        cursor: pointer;
-      }
-      button:focus-visible,
-      a:focus-visible {
-        outline: 3px solid var(--gold);
-        outline-offset: 3px;
-      }
-      .btn {
-        display: inline-block;
-        padding: 10px 24px;
-        border-radius: 40px;
+        font-size: 13px;
         font-weight: 700;
-        text-decoration: none;
-        border: 1px solid var(--red);
-        background: var(--red);
-        color: #fff;
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s,
-          background 0.2s;
-      }
-      .btn.o {
-        background: transparent;
-        color: var(--red);
-      }
-      .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px #b43a4533;
-      }
-      .btn.o:hover {
-        background: var(--gold-wash);
       }
       .cartbtn {
-        background: var(--red);
-        color: #fff;
         border: 0;
-        border-radius: 30px;
-        padding: 7px 15px;
-        font-weight: 700;
-        transition:
-          background 0.2s,
-          transform 0.2s;
+        border-radius: 24px;
+        padding: 6px 13px;
+        color: white;
+        background: var(--red);
+        font-weight: 800;
       }
-      .cartbtn:hover,
-      .add:hover {
-        background: var(--red-deep);
-        transform: translateY(-1px);
+      .cartbtn:hover, .add:hover { background: var(--red-deep); }
+      .hero { text-align: center; padding-bottom: 18px; }
+      .banner {
+        position: relative;
+        height: clamp(190px, 52vw, 360px);
+        overflow: hidden;
+        background: #493536;
       }
-      .hero {
-        text-align: center;
-        padding: 56px 18px 44px;
-        background: radial-gradient(
-          ellipse at 50% 0%,
-          #edc24f20,
-          transparent 58%
-        );
+      .slide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity .65s ease;
       }
-      .hero img {
-        width: 132px;
-        height: 132px;
+      .slide.on { opacity: 1; }
+      .banner:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(0deg, #1d171a66, transparent 70%);
+        pointer-events: none;
+      }
+      .dots {
+        position: absolute;
+        z-index: 1;
+        bottom: 13px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 7px;
+      }
+      .dots button {
+        width: 7px;
+        height: 7px;
+        padding: 0;
+        border: 0;
         border-radius: 50%;
-        box-shadow: 0 14px 34px #b43a4530;
+        background: #ffffff99;
       }
+      .dots button.on { width: 20px; border-radius: 8px; background: white; }
+      .brand-mark {
+        position: relative;
+        z-index: 2;
+        width: 102px;
+        height: 102px;
+        margin: -52px auto 0;
+        padding: 5px;
+        border: 4px solid white;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 8px 24px #23171930;
+      }
+      .brand-mark img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
       .hero h1 {
-        font-size: clamp(32px, 8vw, 54px);
-        font-weight: 800;
+        margin-top: 6px;
         color: var(--red);
-        line-height: 1.3;
-        margin-top: 10px;
+        font-size: clamp(30px, 8vw, 46px);
+        font-weight: 800;
+        line-height: 1.35;
       }
-      .hero p {
-        color: var(--muted);
-        margin: 6px 0 22px;
+      .hero p { margin: 2px 0 12px; color: var(--muted); }
+      .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+      .chip {
+        padding: 5px 13px;
+        border: 1px solid #e8dfd3;
+        border-radius: 24px;
+        background: white;
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 700;
       }
-      .hero .btn {
-        margin: 4px;
-      }
-      .sec {
-        max-width: 1120px;
-        margin: auto;
-        padding: 38px 20px;
-      }
+      .sec { max-width: 1120px; margin: auto; padding: 24px 16px; }
       .sec h2 {
-        font-size: clamp(23px, 4vw, 29px);
-        font-weight: 800;
         color: var(--red);
+        font-size: clamp(22px, 5vw, 28px);
+        font-weight: 800;
         line-height: 1.4;
       }
       .sec h2:after {
         content: "";
         display: block;
-        width: 46px;
+        width: 38px;
         height: 3px;
-        margin-top: 9px;
-        border-radius: 3px;
+        margin-top: 7px;
+        border-radius: 4px;
         background: var(--gold);
       }
-      .sub {
-        color: var(--muted);
-        font-size: 14px;
-        margin: 8px 0 22px;
-      }
-      .offers {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-        gap: 20px;
-      }
-      .of {
-        background: var(--surface);
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--line);
-        transition:
-          transform 0.25s,
-          box-shadow 0.25s;
-      }
-      .of:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 16px 36px #35272a14;
-      }
-      .of img {
-        width: 100%;
-        aspect-ratio: 4/3;
-        object-fit: cover;
-        display: block;
-      }
-      .of .bd {
-        padding: 16px 18px 18px;
+      .sub { margin: 6px 0 16px; color: var(--muted); font-size: 13px; }
+      .search-wrap { max-width: 720px; margin: 8px auto 0; padding: 0 16px 12px; }
+      .searchbox {
+        height: 48px;
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        gap: 12px;
-        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0 16px;
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: white;
+        box-shadow: 0 4px 16px #30282a08;
       }
-      .of small {
-        display: block;
-        color: var(--muted);
+      .searchbox span { color: var(--muted); font-size: 20px; }
+      .searchbox input {
+        width: 100%;
+        border: 0;
+        outline: none;
+        color: var(--ink);
+        background: transparent;
+        font-size: 14px;
       }
-      .of b {
-        color: var(--red);
-        font-size: 22px;
+      .category-shell {
+        position: sticky;
+        top: var(--header-height);
+        z-index: 10;
+        padding: 9px 0 10px;
+        background: #f5f3eff2;
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid #e9e4dfb8;
       }
-      .tabs {
+      .category-tiles {
         display: flex;
         gap: 9px;
         overflow-x: auto;
-        padding: 4px 2px 16px;
-        scrollbar-width: thin;
-        scrollbar-color: var(--gold) transparent;
+        padding: 0 16px 2px;
+        scrollbar-width: none;
       }
-      .tabs button {
-        flex: none;
-        font-weight: 700;
-        padding: 8px 19px;
-        border-radius: 30px;
-        border: 1px solid var(--line);
-        background: var(--surface);
-        color: var(--ink);
-        transition:
-          background 0.2s,
-          color 0.2s,
-          border-color 0.2s,
-          box-shadow 0.2s;
-      }
-      .tabs button:hover {
-        border-color: var(--red);
-        color: var(--red);
-      }
-      .tabs button.on {
-        background: var(--red);
-        color: #fff;
-        border-color: var(--red);
-        box-shadow: 0 4px 12px #b43a4526;
-      }
-      #menu {
-        max-width: 1160px;
-      }
-      #menu .tabs {
-        margin-top: 4px;
-      }
-      #menu .grid {
-        padding-top: 2px;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-        gap: 18px;
-      }
-      .card {
-        background: var(--surface);
-        border-radius: 18px;
+      .category-tiles::-webkit-scrollbar, .offers::-webkit-scrollbar { display: none; }
+      .category-tile {
+        position: relative;
+        flex: 0 0 102px;
+        height: 112px;
         overflow: hidden;
-        border: 1px solid var(--line);
-        box-shadow: 0 5px 18px #35272a0a;
         display: flex;
-        flex-direction: column;
-        transition:
-          transform 0.25s,
-          border-color 0.25s,
-          box-shadow 0.25s;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 8px 5px;
+        border: 2px solid transparent;
+        border-radius: 18px;
+        color: white;
+        background: linear-gradient(145deg, #dfc5a5, #9d786d);
+        box-shadow: 0 4px 12px #30282a14;
+        isolation: isolate;
       }
-      .card:hover {
-        transform: translateY(-4px);
-        border-color: #b43a4540;
-        box-shadow: 0 15px 32px #35272a14;
+      .category-tile img {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
-      .ph {
-        aspect-ratio: 1/1;
+      .category-tile:after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: 20% 0 0;
+        background: linear-gradient(transparent, #171316d9);
+      }
+      .category-tile .tile-emoji {
+        position: absolute;
+        inset: 0 0 16px;
+        z-index: -1;
         display: grid;
         place-items: center;
-        background: radial-gradient(circle at 50% 60%, #fff 38%, #fbf2d9 100%);
+        background: linear-gradient(145deg, #f8e9ca, #d5b9ab);
+        font-size: 40px;
+      }
+      .category-tile b { font-size: 12px; white-space: nowrap; }
+      .category-tile.on { border-color: var(--gold); box-shadow: 0 0 0 2px #eec14d55; }
+      .category-tile.all { background: linear-gradient(145deg, #59464a, #20191c); }
+      .category-tile.all:after { display: none; }
+      .offers {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        padding: 2px 1px 10px;
+        scrollbar-width: none;
+        scroll-snap-type: x mandatory;
+      }
+      .of {
+        flex: 0 0 min(78vw, 285px);
         overflow: hidden;
-      }
-      .ph img {
-        width: 84%;
-        height: 84%;
-        object-fit: contain;
-        filter: drop-shadow(0 12px 10px #35272a24);
-        transition: transform 0.3s;
-      }
-      .card:hover .ph img {
-        transform: scale(1.05) rotate(-1deg);
-      }
-      .ph span {
-        font-size: 64px;
-      }
-      .bd2 {
-        padding: 14px 16px 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        flex: 1;
-      }
-      .bd2 h3 {
-        font-size: 16px;
-        line-height: 1.5;
-        font-weight: 800;
-        color: var(--ink);
-      }
-      .bd2 small {
-        color: var(--muted);
-        font-size: 12px;
-        line-height: 1.6;
-      }
-      .st {
-        display: flex;
-        align-items: center;
-      }
-      .st button {
-        background: none;
-        border: 0;
-        color: #d9d0c5;
-        font-size: 19px;
-        padding: 0 1px;
-        line-height: 1;
-      }
-      .st button.on {
-        color: var(--gold);
-      }
-      .st i {
-        font-style: normal;
-        font-size: 12px;
-        color: var(--muted);
-        margin-inline-start: 6px;
-      }
-      .row {
-        margin-top: auto;
-        padding-top: 12px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 8px;
-        flex-wrap: wrap;
-      }
-      .pr {
-        color: var(--red);
-        font-weight: 800;
-        font-size: 17px;
-      }
-      .add {
-        background: var(--red);
-        color: #fff;
-        border: 0;
-        border-radius: 20px;
-        padding: 7px 14px;
-        font-weight: 700;
-        font-size: 13px;
-        transition:
-          background 0.2s,
-          transform 0.2s;
-      }
-      .add u {
-        text-decoration: none;
-        font-size: 10px;
-        opacity: 0.85;
-        margin-inline-end: 4px;
-      }
-      .sz {
-        display: flex;
-        gap: 6px;
-        flex-wrap: wrap;
-        width: 100%;
-      }
-      .sz .add {
-        background: var(--gold-wash);
-        color: var(--red-deep);
-        border: 1px solid #edc24f80;
-      }
-      .sz .add:hover {
-        background: var(--gold);
-        color: var(--ink);
-      }
-      .info {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-        gap: 16px;
-      }
-      .ic {
-        background: var(--surface);
         border: 1px solid var(--line);
         border-radius: 18px;
-        padding: 22px;
-        text-align: center;
-        box-shadow: 0 5px 18px #35272a08;
+        background: white;
+        box-shadow: var(--shadow);
+        scroll-snap-align: start;
       }
-      .ic span {
-        font-size: 28px;
-      }
-      .ic a.n {
-        color: var(--red);
-        font-weight: 700;
-        display: block;
-        direction: ltr;
-        text-decoration: none;
-      }
-      .ic .btn {
-        margin-top: 10px;
-        font-size: 14px;
-        padding: 7px 16px;
-      }
-      footer {
-        background: var(--red);
-        color: #ffffffd9;
-        text-align: center;
-        padding: 24px 18px;
-        font-size: 13px;
-        margin-top: 24px;
-        border-top: 3px solid var(--gold);
-      }
-      .credit {
-        margin-top: 6px;
+      .offer-picture { position: relative; }
+      .of img { display: block; width: 100%; height: 165px; object-fit: cover; }
+      .discount {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 3px 9px;
+        border-radius: 16px;
+        color: white;
+        background: #30282a;
         font-size: 12px;
-      }
-      .credit a {
-        color: #fff;
         font-weight: 800;
       }
+      .of .bd { padding: 12px 14px 14px; }
+      .of h3 { font-size: 15px; font-weight: 800; }
+      .of small { display: block; min-height: 24px; color: var(--muted); font-size: 12px; }
+      .offer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 9px; }
+      .of b { color: var(--red); font-size: 17px; }
+      .old-price { margin-inline-start: 5px; color: var(--muted); font-size: 12px; text-decoration: line-through; }
+      .offer-add {
+        border: 0;
+        border-radius: 20px;
+        padding: 6px 12px;
+        color: white;
+        background: var(--red);
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      #menu { padding-top: 20px; }
+      .menu-category { margin: 0 0 26px; scroll-margin-top: 194px; }
+      .category-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+      .category-name { display: flex; align-items: center; gap: 9px; color: var(--ink); font-size: 19px; font-weight: 800; }
+      .category-name img, .category-name .heading-emoji {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: white;
+        object-fit: cover;
+        font-size: 20px;
+      }
+      .item-count { color: var(--muted); font-size: 12px; white-space: nowrap; }
+      .menu-list { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: white; box-shadow: var(--shadow); }
+      .card {
+        display: flex;
+        direction: ltr;
+        gap: 12px;
+        min-height: 126px;
+        padding: 12px;
+        border-bottom: 1px solid #eee9e5;
+      }
+      .card:last-child { border-bottom: 0; }
+      .ph {
+        position: relative;
+        flex: 0 0 100px;
+        width: 100px;
+        height: 100px;
+        overflow: visible;
+        display: grid;
+        place-items: center;
+        border-radius: 15px;
+        background: linear-gradient(145deg, #fffdfa, #f4e9d8);
+      }
+      .ph img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; }
+      .ph span { font-size: 44px; }
+      .image-add {
+        position: absolute;
+        bottom: -5px;
+        left: -5px;
+        width: 36px;
+        height: 36px;
+        display: grid;
+        place-items: center;
+        border: 3px solid white;
+        border-radius: 50%;
+        color: white;
+        background: var(--red);
+        font-size: 25px;
+        line-height: 1;
+        box-shadow: 0 3px 9px #30282a24;
+      }
+      .bd2 { min-width: 0; flex: 1; display: flex; flex-direction: column; direction: rtl; gap: 2px; }
+      .bd2 h3 { color: var(--ink); font-size: 15px; font-weight: 800; line-height: 1.5; }
+      .bd2 small {
+        display: -webkit-box;
+        overflow: hidden;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.55;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+      }
+      .st { display: flex; align-items: center; align-self: flex-start; }
+      .st button { padding: 0 1px; border: 0; color: #d9d0c5; background: none; font-size: 17px; line-height: 1; }
+      .st button.on { color: var(--gold); }
+      .st i { margin-inline-start: 5px; color: var(--muted); font-size: 10px; font-style: normal; }
+      .row { margin-top: auto; padding-top: 4px; display: flex; align-items: center; gap: 8px; }
+      .pr { color: var(--red); font-size: 14px; font-weight: 800; }
+      .sz { display: flex; flex-wrap: wrap; gap: 5px; }
+      .sz .add {
+        border: 1px solid #eec14d88;
+        border-radius: 18px;
+        padding: 3px 8px;
+        color: var(--red-deep);
+        background: var(--gold-wash);
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .sz u { margin-inline-end: 3px; text-decoration: none; }
+      .no-results { padding: 30px 14px; color: var(--muted); text-align: center; }
+      .contact-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+      .social-link {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        color: var(--red);
+        background: white;
+        box-shadow: 0 3px 12px #30282a0a;
+        font-size: 21px;
+        text-decoration: none;
+      }
+      .wa-wide {
+        flex: 1 1 190px;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-radius: 26px;
+        color: white;
+        background: #198754;
+        font-weight: 800;
+        text-decoration: none;
+      }
+      .contact-details { margin-top: 14px; color: var(--muted); font-size: 13px; }
+      .contact-details a { color: var(--red); font-weight: 700; }
+      footer {
+        margin-top: 20px;
+        padding: 22px 18px;
+        border-top: 3px solid var(--gold);
+        color: #ffffffdf;
+        background: var(--red);
+        text-align: center;
+        font-size: 13px;
+      }
+      .credit { margin-top: 6px; font-size: 12px; }
+      .credit a { color: white; font-weight: 800; }
       .cart {
         position: fixed;
         inset: 0;
         z-index: 20;
-        background: #24191ab0;
         display: none;
         align-items: flex-end;
         justify-content: center;
+        background: #24191ab0;
         backdrop-filter: blur(3px);
       }
-      .cart.open {
-        display: flex;
-      }
+      .cart.open { display: flex; }
       .cp {
-        background: var(--surface);
         width: 100%;
         max-width: 520px;
         max-height: 90vh;
         overflow: auto;
-        border-radius: 24px 24px 0 0;
         padding: 20px;
         border: 1px solid var(--line);
+        border-radius: 24px 24px 0 0;
+        background: white;
         box-shadow: 0 -12px 40px #24191a20;
       }
-      .ch {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .ch button {
-        background: none;
-        border: 0;
-        font-size: 22px;
-        color: var(--red);
-      }
-      .ci {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 10px;
-        padding: 12px 0;
-        border-bottom: 1px dashed var(--line);
-      }
-      .ci small {
-        display: block;
-        color: var(--red);
-      }
-      .qt {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
+      .ch, .ci, .qt { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+      .ch button { border: 0; color: var(--red); background: none; font-size: 22px; }
+      .ci { padding: 12px 0; border-bottom: 1px dashed var(--line); }
+      .ci small { display: block; color: var(--red); }
       .qt button {
         width: 30px;
         height: 30px;
-        border-radius: 50%;
         border: 1.5px solid var(--red);
+        border-radius: 50%;
+        color: var(--red);
         background: none;
-        color: var(--red);
         font-size: 18px;
       }
-      .tot {
-        margin: 14px 0;
-        font-size: 18px;
-      }
-      .tot b {
-        color: var(--red);
-      }
-      #form {
-        display: none;
-      }
-      #form input,
-      #form textarea {
+      .tot { margin: 14px 0; font-size: 18px; }
+      .tot b { color: var(--red); }
+      #form { display: none; }
+      #form input, #form textarea {
         width: 100%;
-        font: inherit;
-        border: 1px solid var(--line);
-        background: var(--bg);
-        border-radius: 12px;
-        padding: 10px 12px;
         margin-bottom: 8px;
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
         color: var(--ink);
-      }
-      #form input:focus,
-      #form textarea:focus {
-        outline: 2px solid #edc24f99;
-        border-color: var(--gold);
+        background: var(--bg);
       }
       #form .btn {
         width: 100%;
+        padding: 10px 20px;
+        border: 1px solid var(--red);
+        border-radius: 40px;
+        color: white;
+        background: var(--red);
         text-align: center;
+        font-weight: 700;
       }
       .toast {
         position: fixed;
+        z-index: 30;
         inset-inline: 16px;
         bottom: 24px;
-        z-index: 30;
-        background: #35272af2;
-        color: #fff;
+        display: none;
         padding: 12px 18px;
         border-radius: 14px;
+        color: white;
+        background: #35272af2;
         text-align: center;
-        display: none;
         box-shadow: 0 8px 24px #35272a30;
       }
-      @media (max-width: 560px) {
-        header {
-          padding: 8px 12px;
-          gap: 8px;
-        }
-        .lg {
-          font-size: 15px;
-          gap: 7px;
-        }
-        .lg img {
-          width: 34px;
-          height: 34px;
-        }
-        nav {
-          gap: 9px;
-        }
-        nav a {
-          font-size: 12px;
-        }
-        .cartbtn {
-          padding: 6px 10px;
-        }
-        .hero {
-          padding: 40px 16px 32px;
-        }
-        .hero img {
-          width: 112px;
-          height: 112px;
-        }
-        .sec {
-          padding: 30px 16px;
-        }
-        .grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 14px;
-        }
+      @media (min-width: 760px) {
+        :root { --header-height: 64px; }
+        .hero { padding-bottom: 24px; }
+        .brand-mark { width: 116px; height: 116px; margin-top: -58px; }
+        .sec { padding: 30px 24px; }
+        .of { flex-basis: 320px; }
+        .card { gap: 16px; padding: 14px 16px; }
+        .ph { flex-basis: 108px; width: 108px; height: 100px; }
+        .menu-category { scroll-margin-top: 205px; }
       }
       @media (max-width: 380px) {
-        nav {
-          gap: 6px;
-        }
-        nav a {
-          font-size: 11px;
-        }
-        .lg {
-          font-size: 13px;
-        }
+        .lg { gap: 5px; font-size: 14px; }
+        .lg img { width: 32px; height: 32px; }
+        nav { gap: 6px; }
+        nav a { font-size: 11px; }
+        .card { gap: 9px; padding: 10px; }
+        .ph { flex-basis: 88px; width: 88px; height: 92px; }
       }
       @media (prefers-reduced-motion: reduce) {
-        *,
-        *:before,
-        *:after {
-          scroll-behavior: auto !important;
-          transition: none !important;
-        }
+        *, *:before, *:after { scroll-behavior: auto !important; transition: none !important; }
       }
     </style>
   </head>
@@ -611,50 +529,50 @@
       </nav>
     </header>
 
-    <section class="hero">
-      <img src="logo.png" alt="شعار باركود فود" />
-      <h1>باركود فود</h1>
+    <section class="hero" aria-label="باركود فود">
+      <div class="banner" id="banner">
+        <img class="slide on" src="offer1.jpg" alt="عرض باركود فود الأول" />
+        <img class="slide" src="offer2.jpg" alt="عرض باركود فود الثاني" />
+        <div class="dots" id="slide-dots" aria-label="شرائح العروض"></div>
+      </div>
+      <div class="brand-mark"><img src="logo.png" alt="شعار باركود فود" /></div>
+      <h1 id="restaurant-name">باركود فود</h1>
       <p>بكل وقت موجود</p>
-      <a class="btn" href="#menu">شوف المنيو</a
-      ><a class="btn o" href="#contact">الموقع والتواصل</a>
+      <div class="chips">
+        <span class="chip" id="delivery-chip" hidden></span>
+        <span class="chip" id="minimum-chip" hidden></span>
+      </div>
     </section>
 
+    <div class="search-wrap">
+      <label class="searchbox" for="menu-search">
+        <span aria-hidden="true">⌕</span>
+        <input id="menu-search" type="search" placeholder="ابحث عن وجبتك..." autocomplete="off" />
+      </label>
+    </div>
+    <div class="category-shell">
+      <div class="category-tiles" id="tabs" aria-label="أقسام المنيو"></div>
+    </div>
+
     <section class="sec" id="offers">
-      <h2>العروض المتاحة حالياً</h2>
-      <p class="sub">Current Offers</p>
+      <h2>عروض مميزة</h2>
+      <p class="sub">اختار عرضك المفضل</p>
       <div class="offers" id="offers-box"></div>
     </section>
     <section class="sec" id="menu">
       <h2>المنيو</h2>
       <p class="sub">الأسعار بالدينار العراقي</p>
-      <div class="tabs" id="tabs"></div>
-      <div class="grid" id="grid"></div>
+      <div id="menu-sections"></div>
+      <p class="no-results" id="no-results" hidden>لا توجد نتائج</p>
     </section>
     <section class="sec" id="contact">
       <h2>تواصل معنا</h2>
-      <p class="sub">توصيل سريع</p>
-      <div class="info">
-        <div class="ic">
-          <span>📍</span>
-          <h3>الموقع</h3>
-          <p id="addr"></p>
-          <a class="btn" id="maplink" target="_blank" rel="noopener"
-            >افتح على الخريطة</a
-          >
-        </div>
-        <div class="ic">
-          <span>📞</span>
-          <h3>الهاتف</h3>
-          <div id="phones"></div>
-          <a class="btn" id="walink" target="_blank" rel="noopener"
-            >راسلنا واتساب</a
-          >
-        </div>
-        <div class="ic">
-          <span>📸</span>
-          <h3>انستغرام</h3>
-          <a class="n" id="iglink" target="_blank" rel="noopener"></a>
-        </div>
+      <p class="sub">يسعدنا تواصلكم</p>
+      <div class="contact-row" id="contact-links"></div>
+      <div class="contact-details">
+        <span id="addr"></span>
+        <a id="maplink" target="_blank" rel="noopener" hidden>افتح الموقع على الخريطة</a>
+        <div id="phones"></div>
       </div>
     </section>
     <footer>
@@ -704,6 +622,10 @@
         mapUrl:
           "https://maps.apple.com/place?address=Alekiara%20Street,%20Baghdad,%20Iraq&coordinate=33.397144,44.437305&name=Alekiara%20Street&map=explore",
         insta: "barcode.foood",
+        deliveryMin: "",
+        minOrder: "",
+        tiktok: "",
+        facebook: "",
       };
       // بيانات Firebase للتقييم المشترك (اتركها فارغة = التقييم يبقى بجهاز الزائر فقط)
       const FB = { apiKey: "", authDomain: "", projectId: "", appId: "" };
@@ -973,7 +895,9 @@
             '" alt="' +
             esc(it[0]) +
             '" loading="lazy">';
-        const act = multi
+        const firstPrice = multi ? it[1][0] : it[1];
+        const firstName = multi ? it[0] + " (" + SZ[0] + ")" : it[0];
+        const options = multi
           ? '<div class="sz">' +
             it[1]
               .map(
@@ -986,81 +910,248 @@
                   SZ[i] +
                   "</u>" +
                   fmt(p) +
-                  " +</button>",
+                  " د.ع +</button>",
               )
               .join("") +
             "</div>"
-          : '<div class="pr">' +
-            fmt(it[1]) +
-            '</div><button class="add" data-n="' +
-            esc(it[0]) +
-            '" data-p="' +
-            it[1] +
-            '">+ أضف</button>';
+          : '<div class="pr">' + fmt(it[1]) + " د.ع</div>";
         return (
-          '<article class="card"><div class="ph">' +
+          '<article class="card" data-search="' +
+          esc((it[0] + " " + (it[2] || "")).toLocaleLowerCase()) +
+          '"><div class="ph">' +
           pic +
-          '</div><div class="bd2"><h3>' +
+          '<button class="image-add add" data-n="' +
+          esc(firstName) +
+          '" data-p="' +
+          firstPrice +
+          '" aria-label="إضافة ' +
+          esc(firstName) +
+          '" title="إضافة للسلة">+</button></div><div class="bd2"><h3>' +
           esc(it[0]) +
           "</h3>" +
           (it[2] ? "<small>" + esc(it[2]) + "</small>" : "") +
           starsHTML(k) +
           '<div class="row">' +
-          act +
+          (multi ? options : '<div class="pr">' + fmt(it[1]) + " د.ع</div>") +
           "</div></div></article>"
         );
       }
       function show(c) {
         cur = c;
-        $("tabs").innerHTML = Object.keys(M)
+        const categories = Object.keys(M);
+        const categoryImage = (key, cssClass) => {
+          if (!/^[a-z]+(?:\.(?:webp|jpe?g|png))?$/i.test(key))
+            return '<span class="' + cssClass + '">' + key + "</span>";
+          const src = /\.[a-z]+$/i.test(key) ? key : key + ".webp";
+          return '<img class="' + cssClass + '" src="' + src + '" alt="" loading="lazy">';
+        };
+        $("tabs").innerHTML =
+          '<button class="category-tile all on" data-c="*" aria-label="كل الأقسام"><b>الكل</b></button>' +
+          categories
+            .map(
+              (k) =>
+                '<button class="category-tile" data-c="' +
+                esc(k) +
+                '">' +
+                (/^[a-z]+(?:\.(?:webp|jpe?g|png))?$/i.test(M[k][0])
+                  ? categoryImage(M[k][0], "")
+                  : categoryImage(M[k][0], "tile-emoji")) +
+                "<b>" +
+                esc(k) +
+                "</b></button>",
+            )
+            .join("");
+        $("menu-sections").innerHTML = categories
           .map(
             (k) =>
-              '<button class="' +
-              (k === c ? "on" : "") +
-              '" data-c="' +
+              '<section class="menu-category" id="category-' +
+              hash(k) +
+              '" data-category="' +
               esc(k) +
-              '">' +
-              k +
-              "</button>",
+              '"><div class="category-heading"><h3 class="category-name">' +
+              categoryImage(M[k][0], "heading-emoji") +
+              esc(k) +
+              '</h3><span class="item-count">' +
+              M[k][1].length +
+              " أصناف</span></div><div class=\"menu-list\">" +
+              M[k][1].map((it) => card(k, it, M[k][0])).join("") +
+              "</div></section>",
           )
           .join("");
-        $("grid").innerHTML = M[c][1]
-          .map((it) => card(c, it, M[c][0]))
-          .join("");
+        applySearch();
       }
       $("tabs").onclick = (e) => {
         const b = e.target.closest("button");
-        if (b) show(b.dataset.c);
+        if (!b) return;
+        if (b.dataset.c === "*") {
+          setActive("*");
+          $("menu").scrollIntoView({ behavior: "smooth" });
+        } else {
+          setActive(b.dataset.c);
+          $("category-" + hash(b.dataset.c)).scrollIntoView({ behavior: "smooth" });
+        }
       };
+      function setActive(category) {
+        $("tabs").querySelectorAll(".category-tile").forEach((tile) =>
+          tile.classList.toggle(
+            "on",
+            tile.dataset.c === (category || "*"),
+          ),
+        );
+      }
+      let sectionObserver;
+      function observeCategories() {
+        if (sectionObserver) sectionObserver.disconnect();
+        if (!("IntersectionObserver" in window)) return;
+        sectionObserver = new IntersectionObserver(
+          () => {
+            const sections = [
+              ...document.querySelectorAll(".menu-category:not([hidden])"),
+            ];
+            const line = 220;
+            const active =
+              sections.find((section) => {
+                const rect = section.getBoundingClientRect();
+                return rect.top <= line && rect.bottom > line;
+              }) || sections.find((section) => section.getBoundingClientRect().top > line);
+            if (active) setActive(active.dataset.category);
+            else if (window.scrollY < $("menu").offsetTop) setActive("*");
+          },
+          { rootMargin: "-180px 0px -55% 0px", threshold: 0 },
+        );
+        document
+          .querySelectorAll(".menu-category:not([hidden])")
+          .forEach((section) => sectionObserver.observe(section));
+      }
+      function applySearch() {
+        const query = $("menu-search").value.trim().toLocaleLowerCase();
+        let matches = 0;
+        document.querySelectorAll(".menu-category").forEach((section) => {
+          let count = 0;
+          section.querySelectorAll(".card").forEach((item) => {
+            const visible = item.dataset.search.includes(query);
+            item.hidden = !visible;
+            if (visible) count++;
+          });
+          section.hidden = count === 0;
+          section.querySelector(".item-count").textContent = count + " أصناف";
+          matches += count;
+        });
+        $("no-results").hidden = matches > 0;
+        $("tabs").querySelectorAll(".category-tile[data-c]").forEach((tile) => {
+          tile.hidden =
+            tile.dataset.c !== "*" &&
+            !$("category-" + hash(tile.dataset.c)).matches(":not([hidden])");
+        });
+        if (!$("tabs").querySelector(".category-tile.on:not([hidden])"))
+          setActive("*");
+        observeCategories();
+      }
+      $("menu-search").addEventListener("input", applySearch);
       $("offers-box").innerHTML = OFFERS.map(
-        (o) =>
-          '<div class="of"><img src="' +
+        (o) => {
+          const discount = o[4]
+            ? Math.round(((o[4] - o[2]) / o[4]) * 100)
+            : 0;
+          return (
+          '<article class="of"><div class="offer-picture"><img src="' +
           o[3] +
           '" alt="' +
           esc(o[0]) +
-          '" loading="lazy"><div class="bd"><div><h3>' +
+          '" loading="lazy">' +
+          (discount > 0 ? '<span class="discount">-' + discount + "%</span>" : "") +
+          '</div><div class="bd"><h3>' +
           esc(o[0]) +
           "</h3><small>" +
           esc(o[1]) +
-          "</small><b>" +
+          '</small><div class="offer-bottom"><span><b>' +
           fmt(o[2]) +
-          ' د.ع</b></div><button class="btn add" style="font-size:15px;padding:9px 20px" data-n="' +
+          " د.ع</b>" +
+          (o[4] ? '<del class="old-price">' + fmt(o[4]) + " د.ع</del>" : "") +
+          '</span><button class="offer-add add" data-n="' +
           esc("عرض: " + o[0]) +
           '" data-p="' +
           o[2] +
-          '">أضف للسلة</button></div></div>',
+          '">أضف للسلة</button></div></div></article>'
+          );
+        },
       ).join("");
-      $("addr").textContent = CFG.address;
-      $("maplink").href =
-        CFG.mapUrl ||
-        "https://www.google.com/maps/search/?api=1&query=" +
-          encodeURIComponent(CFG.mapQuery);
-      $("phones").innerHTML = CFG.phones
-        .map((p) => '<a class="n" href="tel:' + p + '">' + p + "</a>")
+      $("restaurant-name").textContent = CFG.name;
+      $("delivery-chip").hidden = !CFG.deliveryMin;
+      $("delivery-chip").textContent = CFG.deliveryMin
+        ? "التوصيل ~ " + CFG.deliveryMin + " د"
+        : "";
+      $("minimum-chip").hidden = !CFG.minOrder;
+      $("minimum-chip").textContent = CFG.minOrder
+        ? "الحد الأدنى " + fmt(+CFG.minOrder) + " د.ع"
+        : "";
+      $("slide-dots").innerHTML = [...$("banner").querySelectorAll(".slide")]
+        .map(
+          (_, i) =>
+            '<button class="' +
+            (i === 0 ? "on" : "") +
+            '" aria-label="الشريحة ' +
+            (i + 1) +
+            '" data-slide="' +
+            i +
+            '"></button>',
+        )
         .join("");
-      $("walink").href = "https://wa.me/" + CFG.wa;
-      $("iglink").href = "https://instagram.com/" + CFG.insta;
-      $("iglink").textContent = "@" + CFG.insta;
+      const slides = [...$("banner").querySelectorAll(".slide")];
+      let slideIndex = 0;
+      function showSlide(index) {
+        slideIndex = index % slides.length;
+        slides.forEach((slide, i) => slide.classList.toggle("on", i === slideIndex));
+        $("slide-dots")
+          .querySelectorAll("button")
+          .forEach((dot, i) => dot.classList.toggle("on", i === slideIndex));
+      }
+      $("slide-dots").onclick = (e) => {
+        const dot = e.target.closest("button");
+        if (dot) showSlide(+dot.dataset.slide);
+      };
+      setInterval(() => showSlide(slideIndex + 1), 4000);
+      $("addr").textContent = CFG.address;
+      $("maplink").href = CFG.mapUrl ||
+        (CFG.mapQuery
+          ? "https://www.google.com/maps/search/?api=1&query=" +
+            encodeURIComponent(CFG.mapQuery)
+          : "");
+      $("maplink").hidden = !CFG.mapUrl && !CFG.mapQuery;
+      $("phones").innerHTML = CFG.phones
+        .map((p) => '<a href="tel:' + encodeURIComponent(p) + '">' + esc(p) + "</a>")
+        .join("");
+      const socialLink = (icon, href, label) =>
+        '<a class="social-link" href="' +
+        href +
+        '" aria-label="' +
+        label +
+        '" title="' +
+        label +
+        '"' +
+        (href.startsWith("http") ? ' target="_blank" rel="noopener"' : "") +
+        ">" +
+        icon +
+        "</a>";
+      $("contact-links").innerHTML =
+        (CFG.phones[0]
+          ? socialLink("☎", "tel:" + encodeURIComponent(CFG.phones[0]), "اتصال")
+          : "") +
+        (CFG.tiktok
+          ? socialLink("♪", "https://www.tiktok.com/@" + encodeURIComponent(CFG.tiktok), "تيك توك")
+          : "") +
+        (CFG.facebook
+          ? socialLink("f", "https://www.facebook.com/" + encodeURIComponent(CFG.facebook), "فيسبوك")
+          : "") +
+        (CFG.insta
+          ? socialLink("◎", "https://instagram.com/" + encodeURIComponent(CFG.insta), "انستغرام")
+          : "") +
+        (CFG.wa
+          ? socialLink("◉", "https://wa.me/" + encodeURIComponent(CFG.wa), "واتساب") +
+            '<a class="wa-wide" href="https://wa.me/' +
+            encodeURIComponent(CFG.wa) +
+            '" target="_blank" rel="noopener">◉ تواصل عبر واتساب</a>'
+          : "");
       show(cur);
 
       // ============ السلة ============
